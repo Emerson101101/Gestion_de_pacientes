@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('home');
+    return view('login');
 });
 
 Route::get('/home', function () {
@@ -72,3 +72,12 @@ Route::get('/medicos/generales/update', function () {
     return view('/medicos/generales/update');
 });
 
+Route::get('/especialidades/show', function () {
+    return view('especialidades/show');
+});
+Route::get('/especialidades/create', function () {
+    return view('especialidades/create');
+});
+Route::get('/especialidades/update', function () {
+    return view('especialidades/update');
+});

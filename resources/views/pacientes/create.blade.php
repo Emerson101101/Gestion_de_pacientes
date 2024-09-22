@@ -24,14 +24,19 @@
   <input type="text" class="form-control" id="formGroupExampleInput" placeholder="">
 </div>
 <div class="mb-3">
-  <label for="formGroupExampleInput2" class="form-label">Apellidos</label>
+  <label for="formGroupExampleInput2" class="form-label">Edad</label>
   <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="">
 </div>
 <div class="mb-3">
-  <label for="formGroupExampleInput2" class="form-label">Especialidad</label>
-  <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="">
-</div><div class="mb-3">
   <label for="formGroupExampleInput2" class="form-label">Telefono</label>
+  <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="">
+</div>
+<div class="mb-3">
+  <label for="formGroupExampleInput2" class="form-label">Direccion</label>
+  <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="">
+</div>
+<div class="mb-3">
+  <label for="formGroupExampleInput2" class="form-label">Detalles de consulta</label>
   <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="">
 </div>
  <div class="col-12 mt-2">

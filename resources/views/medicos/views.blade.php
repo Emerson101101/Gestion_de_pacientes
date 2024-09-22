@@ -7,7 +7,7 @@
 <style>
      .baner{
         margin-top:-1%;
-        background-image: url('/img/jaja.jpg');
+        background-image: url('/img/medico.jpg');
         background-size: cover; /* O usa 'contain' según lo que necesites */
         background-repeat: no-repeat;
         height: 90vh;

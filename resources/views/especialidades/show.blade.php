@@ -16,29 +16,23 @@
     </div></center>
     </div>
     <br>
-    <a class="btn btn-primary" href="/pacientes/create">Añadir nuevo pacientes</a>
+    <a class="btn btn-primary" href="/especialidades/create">Añadir nueva especialidad</a>
  <a class="btn btn-danger btn-sm" href="/products/create">PDF</a>
 
  <table class="table table-hover table-bordered mt-2">
  <tr>
  <td>Código</td>
  <td>Nombre</td>
- <td>Edad</td>
- <td>Telefono</td>
- <td>Direccion</td>
- <td>DetallesConsulta</td>
+
 
  <td>Acciones</td>
  </tr>
  {{-- Listado de categorias --}}
  <tr>
  <td>1</td>
- <td>Emerson</td>
- <td>18 años</td>
- <td>7502-1867</td>
- <td>Calvario</td>
+ <td>Odontologo</td>
  <td>
- <a class="btn btn-primary btn-sm" href="/pacientes/update">Modificar</a>
+ <a class="btn btn-primary btn-sm" href="/especialidades/update">Modificar</a>
 
 <button class="btn btn-danger btn-sm" url="/clientes/destroy/" onclick="destroy(this)" token="{{ csrf_token() }}">Eliminar</button>
 
@@ -47,10 +41,8 @@
 
  
  <td>2</td>
- <td>Emerson</td>
- <td>18 años</td>
- <td>7502-1867</td>
- <td>Calvario</td>
+ <td>Pediatra</td>
+
  <td>
  <a class="btn btn-primary btn-sm" href="/medicos/pediatras/update">Modificar</a>
 
@@ -60,10 +52,8 @@
  </td>
 
  <td>3</td>
- <td>Emerson</td>
- <td>18 años</td>
- <td>7502-1867</td>
- <td>Calvario</td>
+ <td>Doctor general</td>
+
  <td>
 <a class="btn btn-primary btn-sm" href="/categorias/edit/">Modificar</a>
 

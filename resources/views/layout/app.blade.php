@@ -35,7 +35,7 @@
           <a class="nav-link" href="/medicos/views">Medicos <img src="{{ asset('img/user-md.png') }}" alt=""> </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Especialidades <img src="{{ asset('img/id-badge.png') }}" alt=""></a>
+          <a class="nav-link" href="/especialidades/show">Especialidades <img src="{{ asset('img/id-badge.png') }}" alt=""></a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
