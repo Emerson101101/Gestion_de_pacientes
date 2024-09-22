@@ -14,5 +14,61 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
+
+Route::get('/home', function () {
+    return view('/home');
+});
+
+Route::get('/pacientes/show', function () {
+    return view('pacientes/show');
+});
+Route::get('/pacientes/create', function () {
+    return view('pacientes/create');
+});
+Route::get('/pacientes/update', function () {
+    return view('pacientes/update');
+});
+
+
+Route::get('/medicos/views', function () {
+    return view('medicos/views');
+});
+
+Route::get('/medicos/pediatras/show', function () {
+    return view('medicos/pediatras/show');
+});
+
+Route::get('/medicos/pediatras/create', function () {
+    return view('/medicos/pediatras/create');
+});
+
+Route::get('/medicos/pediatras/update', function () {
+    return view('/medicos/pediatras/update');
+});
+
+Route::get('/medicos/odontologos/show', function () {
+    return view('medicos/odontologos/show');
+});
+
+Route::get('/medicos/odontologos/create', function () {
+    return view('/medicos/odontologos/create');
+});
+
+Route::get('/medicos/odontologos/update', function () {
+    return view('/medicos/odontologos/update');
+});
+
+Route::get('/medicos/generales/show', function () {
+    return view('medicos/generales/show');
+});
+
+Route::get('/medicos/generales/create', function () {
+    return view('/medicos/generales/create');
+});
+
+Route::get('/medicos/generales/update', function () {
+    return view('/medicos/generales/update');
+});
+
