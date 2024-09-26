@@ -17,20 +17,27 @@
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 <style>
-    .logo-login{
-            width: 60vh;
-            margin-left:90%;
-            height: 10vh;
-    }
-
-</style>
+                            #mimenu{
+                                max-width: 100%;
+                            }
+                            #items_menu{
+                                margin-left:-43%;
+                            }
+                            #logo{
+                                margin-left:-7%;
+                            }
+                            #logo-imagen{
+                                width: 23vh;
+                                margin-top:-5px;
+                            }
+                        </style>
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-lg p-3 mb-2 bg-info text-dark">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-        <a  href="/home"><img  class="logo-login" src="{{ asset('img/logo.png') }}"></a>
-
+                <a id="logo" class="navbar-brand" href="/home"><img  id="logo-imagen"src="{{ asset('img/BitTeff (1).ico') }}"></a>
+                    
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -59,7 +66,36 @@
                             @endif
                         @else
 
-                   
+                       
+                        <nav id="mimenu" class="navbar navbar-expand-lg p-3 mb-2 bg-info text-dark">
+   
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li id="items_menu" class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/pacientes/show">Pacientes <img src="{{ asset('img/users.png') }}" alt=""></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="#">Citas medicas <img src="{{ asset('img/calendar.png') }}" alt=""></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/medicos/views">Medicos <img src="{{ asset('img/user-md.png') }}" alt=""> </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/especialidades/show">Especialidades <img src="{{ asset('img/id-badge.png') }}" alt=""></a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Generar reportes <img src="{{ asset('img/document.png') }}" alt="">
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">PDF </a></li>
+            <li><a class="dropdown-item" href="#">Reportes </a></li>
+          </ul>
+        </li>
+      </ul>
 
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

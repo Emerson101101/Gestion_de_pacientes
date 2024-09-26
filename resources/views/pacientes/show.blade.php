@@ -1,76 +1,51 @@
-@extends('layout.app')
+@extends('layouts.app')
 
-@section('title', 'Inicio')
+@section('title', 'pacientes')
 
 @section('content')
 
-<style>
-    .container{
-        margin-top:3%;
-    }
-</style>
+
 <div class="container">
-<div id="titulo"  class="card">
+    
+<div class="card">
     <center><div class="card-body">
     <h5>Pacientes registrados</h5>
     </div></center>
     </div>
     <br>
-    <a class="btn btn-primary" href="/pacientes/create">Añadir nuevo pacientes</a>
+    <a class="btn btn-primary" href="/pacientes/create">Añadir nuevo paciente</a>
  <a class="btn btn-danger btn-sm" href="/products/create">PDF</a>
 
  <table class="table table-hover table-bordered mt-2">
  <tr>
- <td>Código</td>
- <td>Nombre</td>
- <td>Edad</td>
- <td>Telefono</td>
- <td>Direccion</td>
- <td>DetallesConsulta</td>
+ <td class="p-3 mb-2 bg-success-subtle text-success-emphasis border border-secondary">Código</td>
+ <td class="p-3 mb-2 bg-success-subtle text-success-emphasis border border-secondary">Nombre</td>
+ <td class="p-3 mb-2 bg-success-subtle text-success-emphasis border border-secondary">Edad</td>
+ <td class="p-3 mb-2 bg-success-subtle text-success-emphasis border border-secondary">Telefono</td>
+ <td class="p-3 mb-2 bg-success-subtle text-success-emphasis border border-secondary">Direccion</td>
+ <td class="p-3 mb-2 bg-success-subtle text-success-emphasis border border-secondary">Motivo de Consulta</td>
 
- <td>Acciones</td>
+ <td class="p-3 mb-2 bg-success-subtle text-success-emphasis border border-secondary"> Acciones</td>
  </tr>
- {{-- Listado de categorias --}}
+ {{-- Listado de pacientes --}}
+
+ @foreach ($pacientes as $item) 
  <tr>
- <td>1</td>
- <td>Emerson</td>
- <td>18 años</td>
- <td>7502-1867</td>
- <td>Calvario</td>
- <td>
- <a class="btn btn-primary btn-sm" href="/pacientes/update">Modificar</a>
+ <td class="border border-secondary">{{$item->codigo_paciente}}</td>
+ <td class="border border-secondary">{{$item->nombre }}</td>
+ <td class="border border-secondary">{{$item->edad }}</td>
+ <td class="border border-secondary">{{$item->telefono }}</td>
+ <td class="border border-secondary">{{$item->direccion }}</td>
+ <td class="border border-secondary">{{$item->detallesconsulta }}</td>
+ <td class="border border-secondary">
+ <a class="btn btn-primary btn-sm" href="/pacientes/edit/{{$item->codigo_paciente}}">Modificar</a>
 
-<button class="btn btn-danger btn-sm" url="/clientes/destroy/" onclick="destroy(this)" token="{{ csrf_token() }}">Eliminar</button>
+<button class="btn btn-danger btn-sm" url="/pacientes/destroy/{{$item->codigo_paciente}}" onclick="destroy(this)" token="{{ csrf_token() }}">Eliminar</button>
 
- <tr>
- </td>
+ </td class="border border-secondary">
+ </tr>
 
- 
- <td>2</td>
- <td>Emerson</td>
- <td>18 años</td>
- <td>7502-1867</td>
- <td>Calvario</td>
- <td>
- <a class="btn btn-primary btn-sm" href="/medicos/pediatras/update">Modificar</a>
-
-<button class="btn btn-danger btn-sm" url="/clientes/destroy/" onclick="destroy(this)" token="{{ csrf_token() }}">Eliminar</button>
-
- <tr>
- </td>
-
- <td>3</td>
- <td>Emerson</td>
- <td>18 años</td>
- <td>7502-1867</td>
- <td>Calvario</td>
- <td>
-<a class="btn btn-primary btn-sm" href="/categorias/edit/">Modificar</a>
-
-<button class="btn btn-danger btn-sm" url="/clientes/destroy/" onclick="destroy(this)" token="{{ csrf_token() }}">Eliminar</button>
-
-</td>
- </tr> 
+ @endforeach
  </table>
  
 @endsection
@@ -78,6 +53,6 @@
  {{-- SweetAlert --}}
  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
  {{-- JS --}}
- <script src="{{ asset('js/product.js') }}"></script>
- </div>
+ <script src="{{ asset('js/pacientes.js') }}"></script>
+
 @endsection

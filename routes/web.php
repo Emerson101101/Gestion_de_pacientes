@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PacientesController; 
+
 
 /*
 |--------------------------------------------------------------------------
@@ -13,25 +15,28 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('login');
-});
-
-Route::get('/home', function () {
-    return view('/home');
-});
-
-Route::get('/pacientes/show', function () {
-    return view('pacientes/show');
-});
-Route::get('/pacientes/create', function () {
-    return view('pacientes/create');
-});
-Route::get('/pacientes/update', function () {
-    return view('pacientes/update');
-});
+Route::get('/home', function () {  return view('home');
+})->middleware('auth');
 
 
+//////////////////////////////////7
+
+Route::get('/pacientes/show', [PacientesController::class, 'index']);
+
+
+Route::get('/pacientes/create', [PacientesController::class, 'create']); 
+
+Route::get('/pacientes/edit/{pacientes}', [PacientesController::class, 'edit']); 
+
+Route::post('/pacientes/store', [PacientesController::class, 'store']); 
+// Ruta para modificar producto
+
+Route::put('/pacientes/update/{pacientes}', [PacientesController::class, 'update']); 
+// Ruta para eliminar producto
+
+Route::delete('/pacientes/destroy/{id}', [PacientesController::class, 'destroy']);
+
+//////////////////////////////////////
 Route::get('/medicos/views', function () {
     return view('medicos/views');
 });
@@ -81,3 +86,6 @@ Route::get('/especialidades/create', function () {
 Route::get('/especialidades/update', function () {
     return view('especialidades/update');
 });
+Auth::routes();
+
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

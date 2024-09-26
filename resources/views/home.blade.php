@@ -1,4 +1,4 @@
-@extends('layout.app')
+@extends('layouts.app')
 
 @section('title', 'Inicio')
 
@@ -18,20 +18,19 @@
     height:30vh;
    }
    .contenido{
-    margin-top:5%;
+    margin-top:2%;
       max-width:98%;
       background:white;
       height:83vh;
    } 
-   .container{
-    max-width:94%;
-    margin-top:7%;
-   }
+   
    #sistema{
     margin-top:2%;
     max-width:96%;
    }
-   
+   .row{
+    margin-top:2%;
+   }
    
   
 </style>
@@ -61,9 +60,11 @@
             <div class="col-4">
               <div class="card">
                 <div class="card-body">
-                  <a class="icon-link text-success text-info-emphasis" href="/clientes/show">
-                    <i class="bi bi-calendar-check text-info-emphasis " style="font-size: 4rem;"></i>
+                  <a class="icon-link text-success text-info-emphasis" href="/clientes/show" >
+                    <i class="bi bi-amazon text-info-emphasis " style="font-size: 4rem;"></i>
                   <br>
+                  <img class="ext-info-emphasis" src="{{ asset('img/calendario.png') }}" alt="">
+                  
                     Citas de las consultas
                 </a>
                 </div>
@@ -74,9 +75,11 @@
             <div class="col-4">
               <div class="card">
                 <div class="card-body">
-                <a class="icon-link text-success text-info-emphasis" style="" href="/clientes/show">
+                <a class="icon-link text-success text-info-emphasis" style="" href="/pacientes/show">
                   <i class="bi bi-people-fill text-success text-info-emphasis" style="font-size: 4rem;"></i>
                   <br>
+                  <img class="ext-info-emphasis" src="{{ asset('img/agregar-contacto (1).png') }}" alt="">
+
                     Pacientes
                 </a>
                 </div>
@@ -88,9 +91,11 @@
             <div class="col-4">
               <div class="card">
                 <div class="card-body">
-                <a class="icon-link text-success text-info-emphasis" href="/clientes/show">
+                <a class="icon-link text-success text-info-emphasis" href="/medicos/views">
                   <i class="bi bi-person-video text-success text-info-emphasis" style="font-size: 4rem;"></i>
                   <br>
+                  <img class="ext-info-emphasis" src="{{ asset('img/usuario (2).png') }}" alt="">
+                  
                     Medicos
                 </a>
                 </div>
@@ -106,6 +111,8 @@
                 <a class="icon-link text-success text-info-emphasis" href="/clientes/show">
                   <i class="bi bi-clipboard2-minus text-success text-info-emphasis" style="font-size: 4rem;"></i>
                   <br>
+                  <img class="ext-info-emphasis" src="{{ asset('img/portapapeles.png') }}" alt="">
+
                     Reportes
                 </a>
                 </div>
@@ -115,10 +122,12 @@
             <div class="col-4" style="margin-top:3%">
               <div class="card">
                 <div class="card-body">
-                <a class="icon-link text-success text-info-emphasis" href="/clientes/show">
-                <i class="bi bi-file-earmark-pdf text-success text-info-emphasis" style="font-size: 4rem;"></i>
+                <a class="icon-link text-success text-info-emphasis" href="/especialidades/show">
+                <i class="bi bi-mortarboard-fill text-success text-info-emphasis" style="font-size: 4rem;"></i>
                 <br>
-                    PDF
+                <img class="ext-info-emphasis" src="{{ asset('img/etiqueta.png') }}" alt="">
+
+                    Especialidades
                 </a>
                 </div>
               </div>

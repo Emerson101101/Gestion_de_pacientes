@@ -1,4 +1,4 @@
-@extends('layout.app')
+@extends('layouts.app')
 
 @section('title', 'actualizar')
 
@@ -6,7 +6,7 @@
 
 
 <style>
-    .container{
+    #container{
         max-width: 70%;
     }
     
@@ -16,7 +16,7 @@
  <h5 class="text-center">Formulario para actualizar pediatras</h5>
 <hr>
 
-<div class="container">
+<div id="container" class="container">
 <form action="">
 
 <div class="mb-3">

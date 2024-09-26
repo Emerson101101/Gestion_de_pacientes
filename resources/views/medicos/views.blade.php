@@ -1,4 +1,4 @@
-@extends('layout.app')
+@extends('layouts.app')
 
 @section('title', 'Inicio')
 
@@ -6,7 +6,7 @@
 
 <style>
      .baner{
-        margin-top:-1%;
+        margin-top:-3%;
         background-image: url('/img/medico.jpg');
         background-size: cover; /* O usa 'contain' según lo que necesites */
         background-repeat: no-repeat;
@@ -16,9 +16,9 @@
         float:left;
         max-width: 45%;
      }
-     .container{
+     .containers{
         max-width: 100%;
-        margin-top:-1%;
+        margin-top:-3%;
      }
      #titulo{
      
@@ -38,7 +38,7 @@
    
 </div>
 
-<center><div class="container p-3 mb-2 bg-body-secondary">
+<center><div class="containers p-3 mb-2 bg-body-secondary">
 
     <br>
     <div id="titulo"  class="card">

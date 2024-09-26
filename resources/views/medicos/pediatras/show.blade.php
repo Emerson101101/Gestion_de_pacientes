@@ -1,15 +1,15 @@
-@extends('layout.app')
+@extends('layouts.app')
 
 @section('title', 'Inicio')
 
 @section('content')
 
 <style>
-    .container{
+    #container{
         margin-top:3%;
     }
 </style>
-<div class="container">
+<div id="container" class="container">
 <div id="titulo"  class="card">
     <center><div class="card-body">
     <h5>Pediatras de nuestra clinica</h5>
@@ -21,13 +21,13 @@
 
  <table class="table table-hover table-bordered mt-2">
  <tr>
- <td>Código</td>
- <td>Nombre</td>
- <td>Apellido</td>
- <td>Especialidad</td>
- <td>Telefono</td>
+ <td class="p-3 mb-2 bg-success-subtle text-success-emphasis border border-secondary">Código</td>
+ <td class="p-3 mb-2 bg-success-subtle text-success-emphasis border border-secondary">Nombre</td>
+ <td class="p-3 mb-2 bg-success-subtle text-success-emphasis border border-secondary">Apellido</td>
+ <td class="p-3 mb-2 bg-success-subtle text-success-emphasis border border-secondary">Especialidad</td>
+ <td class="p-3 mb-2 bg-success-subtle text-success-emphasis border border-secondary">Telefono</td>
 
- <td>Acciones</td>
+ <td class="p-3 mb-2 bg-success-subtle text-success-emphasis border border-secondary">Acciones</td>
  </tr>
  {{-- Listado de categorias --}}
  <tr>

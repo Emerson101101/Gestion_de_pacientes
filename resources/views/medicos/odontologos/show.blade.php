@@ -1,15 +1,15 @@
-@extends('layout.app')
+@extends('layouts.app')
 
 @section('title', 'Inicio')
 
 @section('content')
 
 <style>
-    .container{
+    #container{
         margin-top:3%;
     }
 </style>
-<div class="container">
+<div id="container" class="container">
 <div id="titulo"  class="card">
     <center><div class="card-body">
     <h5>Odontologos de nuestra clinica</h5>
