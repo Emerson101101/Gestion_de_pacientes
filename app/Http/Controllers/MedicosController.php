@@ -1,11 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\pacientes;
+use App\Models\medico;
+
 
 use Illuminate\Http\Request;
 
-class PacientesController extends Controller
+class MedicosController extends Controller
 {
     public function __construct()
     {
@@ -18,11 +19,12 @@ class PacientesController extends Controller
      */
     public function index()
     {
-        $pacientes = pacientes::All();
+        //listar todos los productos
+        $medico = medico::all();
+        dd($medico); 
         
-        return view('/pacientes/show')->with(['pacientes'=>$pacientes]);
-}
-
+            return view('/medicos/odontologos/show'); 
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -31,7 +33,8 @@ class PacientesController extends Controller
      */
     public function create()
     {
-        return view('/pacientes/create'); 
+        $categorias = categorias::all();
+        return view('/clientes/create')->with(['categorias'=>$categorias]); 
     }
 
     /**
@@ -43,18 +46,14 @@ class PacientesController extends Controller
     public function store(Request $request)
     {
         $data = request()->validate([ 
-            'nombre'=> 'required',
-            'edad'=> 'required',
-            'telefono'=> 'required',
-            'fecha'=> 'required',
-            'direccion'=> 'required',
-            'detallesconsulta'=> 'required'
-
+            'nombre'=> 'required', 
+            'edad'=> 'required', 
+            'categoria'=> 'required'
             ]); 
             // Enviar insert 
-            pacientes::create($data); 
+            medico::create($data); 
             // Redireccionar 
-            return redirect('/pacientes/show'); 
+            return redirect('/medicos/odontologos/show'); 
     }
 
     /**
@@ -74,12 +73,11 @@ class PacientesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(pacientes $pacientes)
+    public function edit(clientes $clientes)
     {
-       
+        $categorias = Categorias::all(); 
 
-        return view('pacientes/update')->with(['pacientes'=>$pacientes]);
-        
+        return view('clientes/update')->with(['cliente'=>$clientes,'categorias'=>$categorias]);
     }
 
     /**
@@ -89,28 +87,22 @@ class PacientesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, pacientes $pacientes )
+    public function update(Request $request,clientes $clientes)
     {
         $data = request()->validate([ 
-            'nombre' => 'required',
-            'edad'=> 'required',
-            'telefono'=> 'required',
-            'fecha'=> 'required',
-            'direccion'=> 'required',
-            'detallesconsulta'=> 'required'
+            'nombre' => 'required', 
+            'edad' => 'required', 
+            'categoria' => 'required'
             ]); 
 
-            $pacientes->nombre = $data['nombre']; 
-            $pacientes->edad = $data['edad']; 
-            $pacientes->telefono = $data['telefono'];  
-            $pacientes->fecha = $data['fecha'];  
-            $pacientes->direccion = $data['direccion']; 
-            $pacientes->detallesconsulta = $data['detallesconsulta']; 
-            $pacientes->updated_at = now();
-            $pacientes->save(); 
+            $clientes->nombre = $data['nombre']; 
+            $clientes->edad = $data['edad']; 
+            $clientes->categoria = $data['categoria'];
+            $clientes->updated_at = now();
+            $clientes->save(); 
             // Redireccionar 
-            return redirect('/pacientes/show'); 
-     
+            
+            return redirect('/clientes/show'); 
     }
 
     /**
@@ -121,7 +113,7 @@ class PacientesController extends Controller
      */
     public function destroy($id)
     {
-        pacientes::destroy($id);
+        Clientes::destroy($id);
         return response()->json(array('res'=>true)); 
     }
 }

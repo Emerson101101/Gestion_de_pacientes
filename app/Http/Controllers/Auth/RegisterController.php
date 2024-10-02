@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
@@ -35,10 +36,7 @@ class RegisterController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('guest');
-    }
+  
 
     /**
      * Get a validator for an incoming registration request.
@@ -46,6 +44,14 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
+
+     public function index()
+     {
+         $users = User::All();
+         
+         return view('/auth/show')->with(['user'=>$users]);
+ }
+ 
     protected function validator(array $data)
     {
         return Validator::make($data, [
@@ -69,4 +75,100 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
     }
+    public function creates()
+    {
+        return view('/auth/register'); 
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+
+     public function store(Request $request)
+     {
+         $data = request()->validate([ 
+             'name'=> 'required',
+             'email'=> 'required',
+             'password'=> 'required',
+ 
+             ]); 
+             // Enviar insert 
+             user::create($data); 
+             // Redireccionar 
+             return redirect('/auth/show'); 
+     }
+ 
+     /**
+      * Display the specified resource.
+      *
+      * @param  int  $id
+      * @return \Illuminate\Http\Response
+      */
+     public function show($id)
+     {
+         //
+     }
+ 
+     /**
+      * Show the form for editing the specified resource.
+      *
+      * @param  int  $id
+      * @return \Illuminate\Http\Response
+      */
+      public function edits($id)
+{
+    $user = User::find($id);
+    return view('users.edit', compact('user'));
 }
+
+     public function edit(user $user)
+     {
+        
+ 
+         return view('auth/update')->with(['user'=>$user]);
+         
+     }
+ 
+     /**
+      * Update the specified resource in storage.
+      *
+      * @param  \Illuminate\Http\Request  $request
+      * @param  int  $id
+      * @return \Illuminate\Http\Response
+      */
+     public function update(Request $request, user $user )
+     {
+         $data = request()->validate([ 
+             'name' => 'required',
+             'email'=> 'required',
+             'password'=> 'required',
+             ]); 
+ 
+             $user->name = $data['name']; 
+             $user->email = $data['email']; 
+             $user->password = $data['password'];  
+             $user->updated_at = now();
+             $user->save(); 
+             // Redireccionar 
+             return redirect('/auth/show'); 
+      
+     }
+ 
+     /**
+      * Remove the specified resource from storage.
+      *
+      * @param  int  $id
+      * @return \Illuminate\Http\Response
+      */
+
+    public function destroy($id)
+    {
+        user::destroy($id);
+        return response()->json(array('res'=>true)); 
+    }
+}
+
+

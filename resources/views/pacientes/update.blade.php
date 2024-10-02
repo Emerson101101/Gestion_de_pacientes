@@ -45,6 +45,17 @@ value="{{$pacientes->telefono}}"> @error('telefono')
  @enderror
  </div>
 
+ <div class="col-6">
+Fecha
+ <input type="date" class="form-control" name="fecha"
+value="{{$pacientes->fecha}}"> @error('fecha') 
+<span class="invalid-feedback d-block" role="alert">
+<strong>{{$message}}</strong>
+
+</span>  
+ @enderror
+ </div>
+
 <div class="col-6">
 Direccion
  <input type="text" class="form-control" name="direccion"

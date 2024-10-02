@@ -22,6 +22,7 @@
  <td class="p-3 mb-2 bg-success-subtle text-success-emphasis border border-secondary">Nombre</td>
  <td class="p-3 mb-2 bg-success-subtle text-success-emphasis border border-secondary">Edad</td>
  <td class="p-3 mb-2 bg-success-subtle text-success-emphasis border border-secondary">Telefono</td>
+ <td class="p-3 mb-2 bg-success-subtle text-success-emphasis border border-secondary">Fecha de Consulta</td>
  <td class="p-3 mb-2 bg-success-subtle text-success-emphasis border border-secondary">Direccion</td>
  <td class="p-3 mb-2 bg-success-subtle text-success-emphasis border border-secondary">Motivo de Consulta</td>
 
@@ -35,6 +36,7 @@
  <td class="border border-secondary">{{$item->nombre }}</td>
  <td class="border border-secondary">{{$item->edad }}</td>
  <td class="border border-secondary">{{$item->telefono }}</td>
+ <td class="border border-secondary">{{$item->fecha }}</td>
  <td class="border border-secondary">{{$item->direccion }}</td>
  <td class="border border-secondary">{{$item->detallesconsulta }}</td>
  <td class="border border-secondary">

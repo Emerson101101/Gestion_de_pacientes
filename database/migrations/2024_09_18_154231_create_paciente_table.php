@@ -1,3 +1,4 @@
+
 <?php
 
 use Illuminate\Database\Migrations\Migration;
@@ -18,6 +19,7 @@ return new class extends Migration
             $table->string('nombre', 100);
             $table->string('edad');
             $table->string('telefono');
+            $table->string('fecha');
             $table->string('direccion', 100);
             $table->string('detallesconsulta', 100);
             $table->timestamps();

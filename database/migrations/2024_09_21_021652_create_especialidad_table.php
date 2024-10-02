@@ -16,8 +16,6 @@ return new class extends Migration
         Schema::create('especialidad', function (Blueprint $table) {
             $table->id("codico_especialidad");
             $table->string("nombre");
-            $table->bigInteger('medico')->unsigned();
-            $table->foreign('medico')->references('codigo_medico')->on('medico');
             $table->timestamps();
         });
     }

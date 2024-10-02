@@ -2,6 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PacientesController; 
+use App\Http\Controllers\MedicosController; 
+use App\Http\Controllers\EspecialidadesController; 
+use App\Http\Controllers\Auth\RegisterController; 
+
 
 
 /*
@@ -18,8 +22,40 @@ use App\Http\Controllers\PacientesController;
 Route::get('/home', function () {  return view('home');
 })->middleware('auth');
 
+//////////////////Usuario///////////////
 
-//////////////////////////////////7
+Route::get('/auth/show', [App\Http\Controllers\Auth\RegisterController::class, 'index']);
+
+Route::get('/auth/register', [App\Http\Controllers\Auth\RegisterController::class, 'creates']); 
+
+Route::get('/auth/edit/{user}', [App\Http\Controllers\Auth\RegisterController::class, 'edit']); 
+
+Route::post('/auth/store', [App\Http\Controllers\Auth\RegisterController::class, 'store']); 
+// Ruta para modificar producto
+
+Route::put('/auth/update/{user}', [App\Http\Controllers\Auth\RegisterController::class, 'update']); 
+// Ruta para eliminar producto
+
+Route::delete('/auth/destroy/{id}', [App\Http\Controllers\Auth\RegisterController::class, 'destroy']);
+
+///////////////////especialidades///////////////
+
+Route::get('/especialidades/show', [EspecialidadesController::class, 'index']);
+
+Route::get('/especialidades/create', [EspecialidadesController::class, 'create']); 
+
+Route::get('/especialidades/edit/{especialidades}', [EspecialidadesController::class, 'edit']); 
+
+Route::post('/especialidades/store', [EspecialidadesController::class, 'store']); 
+// Ruta para modificar producto
+
+Route::put('/especialidades/update/{especialidades}', [EspecialidadesController::class, 'update']); 
+// Ruta para eliminar producto
+
+Route::delete('/especialidades/destroy/{id}', [EspecialidadesController::class, 'destroy']);
+
+///////////////////pacientes///////////////
+
 
 Route::get('/pacientes/show', [PacientesController::class, 'index']);
 
@@ -36,10 +72,13 @@ Route::put('/pacientes/update/{pacientes}', [PacientesController::class, 'update
 
 Route::delete('/pacientes/destroy/{id}', [PacientesController::class, 'destroy']);
 
-//////////////////////////////////////
+////////////////////medicos//////////////////
+
+
 Route::get('/medicos/views', function () {
     return view('medicos/views');
 });
+Route::get('/medicos/odontologos/show', [MedicosController::class, 'index']);
 
 Route::get('/medicos/pediatras/show', function () {
     return view('medicos/pediatras/show');
@@ -86,6 +125,22 @@ Route::get('/especialidades/create', function () {
 Route::get('/especialidades/update', function () {
     return view('especialidades/update');
 });
+///////////////////////////////////777
+
+Route::get('/citas/show', function () {
+    return view('citas/show');
+});
+Route::get('/citas/create', function () {
+    return view('citas/create');
+});
+Route::get('/citas/update', function () {
+    return view('citas/update');
+});
+
+
+
+
 Auth::routes();
+
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

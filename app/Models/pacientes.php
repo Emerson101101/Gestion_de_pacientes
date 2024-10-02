@@ -11,5 +11,5 @@ class pacientes extends Model
     
     protected $table = 'paciente';
     protected $primaryKey = 'codigo_paciente';
-    protected $fillable = ['nombre', 'edad','telefono','direccion', 'detallesconsulta'];
+    protected $fillable = ['nombre', 'edad','telefono','fecha','direccion', 'detallesconsulta'];
 }

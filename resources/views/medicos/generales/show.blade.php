@@ -21,22 +21,22 @@
 
  <table class="table table-hover table-bordered mt-2">
  <tr>
- <td>Código</td>
- <td>Nombre</td>
- <td>Apellido</td>
- <td>Especialidad</td>
- <td>Telefono</td>
+ <td class="border border-secondary">Código</td>
+ <td class="border border-secondary">Nombre</td>
+ <td class="border border-secondary">Apellido</td>
+ <td class="border border-secondary">Especialidad</td>
+ <td class="border border-secondary">Telefono</td>
 
- <td>Acciones</td>
+ <td class="border border-secondary">Acciones</td>
  </tr>
  {{-- Listado de categorias --}}
  <tr>
- <td>1</td>
- <td>Emerson</td>
- <td>Sanchez</td>
- <td>Pediatra</td>
- <td>7502-1867</td>
- <td>
+ <td class="border border-secondary">1</td>
+ <td class="border border-secondary">Emerson</td>
+ <td class="border border-secondary">Sanchez</td>
+ <td class="border border-secondary">Generales</td>
+ <td class="border border-secondary">7502-1867</td>
+ <td class="border border-secondary">
  <a class="btn btn-primary btn-sm" href="/medicos/generales/update">Modificar</a>
 
 <button class="btn btn-danger btn-sm" url="/clientes/destroy/" onclick="destroy(this)" token="{{ csrf_token() }}">Eliminar</button>
@@ -45,12 +45,12 @@
  </td>
 
  
- <td>2</td>
- <td>Lorena</td>
- <td>Sigaran</td>
- <td>Pediatra</td>
- <td>7502-1867</td>
- <td>
+ <td class="border border-secondary">2</td>
+ <td class="border border-secondary">Lorena</td>
+ <td class="border border-secondary">Sigaran</td>
+ <td class="border border-secondary">Generales</td>
+ <td class="border border-secondary">7502-1867</td>
+ <td class="border border-secondary">
  <a class="btn btn-primary btn-sm" href="/medicos/pediatras/update">Modificar</a>
 
 <button class="btn btn-danger btn-sm" url="/clientes/destroy/" onclick="destroy(this)" token="{{ csrf_token() }}">Eliminar</button>
@@ -58,12 +58,12 @@
  <tr>
  </td>
 
- <td>3</td>
- <td>Alberto</td>
- <td>Surio</td>
- <td>Pediatra</td>
- <td>7502-1867</td>
- <td>
+ <td class="border border-secondary">3</td>
+ <td class="border border-secondary">Alberto</td>
+ <td class="border border-secondary">Surio</td>
+ <td class="border border-secondary">Generales</td>
+ <td class="border border-secondary">7502-1867</td>
+ <td class="border border-secondary">
 <a class="btn btn-primary btn-sm" href="/categorias/edit/">Modificar</a>
 
 <button class="btn btn-danger btn-sm" url="/clientes/destroy/" onclick="destroy(this)" token="{{ csrf_token() }}">Eliminar</button>

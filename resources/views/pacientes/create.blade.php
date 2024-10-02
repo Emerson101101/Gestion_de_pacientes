@@ -51,6 +51,16 @@ Telefono
 @enderror 
 </div>
 
+<div class="col-6">
+Fecha
+<input type="date" class="form-control" name="fecha">
+@error('fecha') 
+<span class="invalid-feedback d-block" role="alert">
+<strong>{{$message}}</strong>
+</span> 
+@enderror 
+</div>
+
 
 <div class="col-6">
 Direccion

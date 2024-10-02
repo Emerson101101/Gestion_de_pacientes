@@ -19,8 +19,6 @@ return new class extends Migration
             $table->foreign('paciente')->references('codigo_paciente')->on('paciente');
             $table->bigInteger('medico')->unsigned();
             $table->foreign('medico')->references('codigo_medico')->on('medico');
-            $table->bigInteger('receta')->unsigned();
-            $table->foreign('receta')->references('codigo_receta')->on('receta');
             $table->date('fecha');
             $table->string('hora');
             $table->string('motivo');
