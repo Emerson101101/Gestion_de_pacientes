@@ -3,86 +3,125 @@
 @section('title', 'Actualizar')
 
 @section('content')
-<h1 class="text-center">Modificar</h1>
- <h5 class="text-center">Formulario para actualizar pacientes</h5>
+
+<style>
+    #container {
+        max-width: 70%;
+        margin: auto; /* Centra el contenedor */
+        background-color: #fff; /* Fondo blanco */
+        padding: 20px; /* Espaciado interno */
+        border-radius: 8px; /* Bordes redondeados */
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Sombra suave */
+        margin-top: 20px; /* Espacio superior */
+    }
+
+    .header {
+        text-align: center; /* Centrar texto */
+        margin-bottom: 20px; /* Espaciado inferior */
+    }
+
+    .header h1 {
+        font-size: 2rem; /* Tamaño de fuente más grande */
+        font-weight: 600; /* Peso de fuente más fuerte */
+        margin: 0; /* Elimina margen */
+    }
+
+    .header h5 {
+        margin: 5px 0 0; /* Espaciado del subtítulo */
+        font-weight: 400; /* Peso de fuente más ligero */
+    }
+
+    hr {
+        border: 1px solid #0056b3; /* Línea horizontal azul más oscura */
+    }
+
+    .btn-primary {
+        border-radius: 5px; /* Bordes redondeados para botones */
+    }
+</style>
+
+<div class="header">
+    <h1>Modificar Paciente</h1>
+    <h5>Formulario para actualizar pacientes</h5>
+</div>
 <hr>
 
-<div class="container">
- <form action="/pacientes/update/{{$pacientes->codigo_paciente}}" method="POST">
-@csrf
- @method('PUT') 
- <div class="row">
-<div class="col-6">
-Nombre 
- <input type="text" class="form-control" name="nombre"
-value="{{$pacientes->nombre}}"> @error('nombre') 
-<span class="invalid-feedback d-block" role="alert">
-<strong>{{$message}}</strong>
+<div id="container">
+    <form action="/pacientes/update/{{$pacientes->codigo_paciente}}" method="POST">
+        @csrf
+        @method('PUT') 
 
-</span>  
- @enderror
- </div>
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label for="nombre" class="form-label">Nombre</label>
+                <input type="text" class="form-control" name="nombre" value="{{$pacientes->nombre}}">
+                @error('nombre') 
+                <div class="invalid-feedback d-block">
+                    <strong>{{$message}}</strong>
+                </div>  
+                @enderror
+            </div>
 
- <div class="col-6">
-Edad
- <input type="text" class="form-control" name="edad"
-value="{{$pacientes->edad}}"> @error('edad') 
-<span class="invalid-feedback d-block" role="alert">
-<strong>{{$message}}</strong>
+            <div class="col-md-6">
+                <label for="edad" class="form-label">Edad</label>
+                <input type="text" class="form-control" name="edad" value="{{$pacientes->edad}}">
+                @error('edad') 
+                <div class="invalid-feedback d-block">
+                    <strong>{{$message}}</strong>
+                </div>  
+                @enderror
+            </div>
+        </div>
 
-</span>  
- @enderror
- </div>
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label for="telefono" class="form-label">Teléfono</label>
+                <input type="number" class="form-control" name="telefono" value="{{$pacientes->telefono}}">
+                @error('telefono') 
+                <div class="invalid-feedback d-block">
+                    <strong>{{$message}}</strong>
+                </div>  
+                @enderror
+            </div>
 
-<div class="col-6">
-Telefono
- <input type="number" class="form-control" name="telefono"
-value="{{$pacientes->telefono}}"> @error('telefono') 
-<span class="invalid-feedback d-block" role="alert">
-<strong>{{$message}}</strong>
+            <div class="col-md-6">
+                <label for="fecha" class="form-label">Fecha</label>
+                <input type="date" class="form-control" name="fecha" value="{{$pacientes->fecha}}">
+                @error('fecha') 
+                <div class="invalid-feedback d-block">
+                    <strong>{{$message}}</strong>
+                </div>  
+                @enderror
+            </div>
+        </div>
 
-</span>  
- @enderror
- </div>
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label for="direccion" class="form-label">Dirección</label>
+                <input type="text" class="form-control" name="direccion" value="{{$pacientes->direccion}}">
+                @error('direccion') 
+                <div class="invalid-feedback d-block">
+                    <strong>{{$message}}</strong>
+                </div>  
+                @enderror
+            </div>
 
- <div class="col-6">
-Fecha
- <input type="date" class="form-control" name="fecha"
-value="{{$pacientes->fecha}}"> @error('fecha') 
-<span class="invalid-feedback d-block" role="alert">
-<strong>{{$message}}</strong>
+            <div class="col-md-6">
+                <label for="detallesconsulta" class="form-label">Motivo de Consulta</label>
+                <input type="text" class="form-control" name="detallesconsulta" value="{{$pacientes->detallesconsulta}}">
+                @error('detallesconsulta') 
+                <div class="invalid-feedback d-block">
+                    <strong>{{$message}}</strong>
+                </div>  
+                @enderror
+            </div>
+        </div>
 
-</span>  
- @enderror
- </div>
+        <div class="text-center mt-4">
+            <button class="btn btn-primary">Guardar</button>
+        </div> 
+    </form> 
+</div>
+<br>
 
-<div class="col-6">
-Direccion
- <input type="text" class="form-control" name="direccion"
-value="{{$pacientes->direccion}}"> @error('direccion') 
-<span class="invalid-feedback d-block" role="alert">
-<strong>{{$message}}</strong>
-
-</span>  
- @enderror
- </div>
-
-
-<div class="col-6">
-Motivo de Consulta
- <input type="text" class="form-control" name="detallesconsulta"
-value="{{$pacientes->detallesconsulta}}"> @error('detallesconsulta') 
-<span class="invalid-feedback d-block" role="alert">
-<strong>{{$message}}</strong>
-
-</span>  
- @enderror
- </div>
-
- <div class="col-12 mt-2">
- <button class="btn btn-primary">Guardar</button>
- </div> 
- </form> 
- </div>
- <br>
 @endsection

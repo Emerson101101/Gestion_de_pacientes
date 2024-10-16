@@ -5,88 +5,83 @@
 @section('content')
 
 <style>
-     .baner{
-        margin-top:-3%;
-        background-image: url('/img/medico.jpg');
-        background-size: cover; /* O usa 'contain' según lo que necesites */
-        background-repeat: no-repeat;
-        height: 90vh;
-        width: 45vh;
-        background-position: top;
-        float:left;
-        max-width: 45%;
-     }
-     .containers{
+    .container-custom {
         max-width: 100%;
-        margin-top:-3%;
-     }
-     #titulo{
-     
-        max-width: 75%;
-        margin-left:23%
-     }
-     .tarjetas{
-        margin-top:2%;
-        margin-left:20%;
-        margin-right:-6%;
-        display: flex; /* Activa Flexbox */
-        justify-content: space-around; /* Espaciado entre elementos */
-        align-items: center;
-     }
-</style>
-<div class="baner">
+        margin: 3% auto; /* Centrar horizontalmente el contenedor */
+        margin-top:-2.5%;
+        
+    }
    
-</div>
+    .tarjetas {
+        display: flex;
+        justify-content: center; /* Centrar las tarjetas */
+        align-items: center;
+        flex-wrap: wrap; /* Permite que las tarjetas se ajusten en varias filas si es necesario */
+    }
+    .card {
+        margin: 1rem; /* Añadir margen para separar las tarjetas */
+        
+    }
+    .blockquote{
+        margin-top:-1%;
+    }
+    .header {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+    .header h5 {
+        font-size: 2rem;
+        font-weight: 700;
+        color: #007bff; /* Azul primario */
+    }
+    .header p {
+        color: #6c757d; /* Texto secundario */
+        font-size: 1.1rem;
+    }
+</style>
 
-<center><div class="containers p-3 mb-2 bg-body-secondary">
-
-    <br>
-    <div id="titulo"  class="card">
-    <center><div class="card-body">
-    <h5>Medicos encargados de darte lo mejor para tu bienestar</h5>
-    </div></center>
+<div class="container-custom p-3 mb-2 bg-body-secondar rounded shadow-sm text-center">
+    <div class="header">
+        <h5>Especialidades</h5>
     </div>
-    <br>
-    <figure class="text-center">
-    <blockquote class="blockquote">
-        <p>Especialidades</p>
-    </blockquote>
-    <figcaption class="blockquote-footer">
-        Selecciona <cite title="Source Title"> las lista de los medicos que quieres ver</cite>
-    </figcaption>
+    
+
+    <figure>
+        <blockquote class="blockquote">
+        </blockquote>
+        <figcaption class="blockquote-footer">
+            Selecciona <cite title="Source Title">la tabla de los médicos que quieres ver</cite>
+        </figcaption>
     </figure>
 
-    <!------------------------------------------------------->
     <div class="tarjetas">
-    <div class="card" style="width: 18rem;">
-    <img src="{{ asset('img/dentista.jpg') }}" class="card-img-top" alt="...">
-    <div class="card-body">
-        <h5 class="card-title">Odontologos</h5>
-        <p class="card-text">Encargado del tratamiento de enfermedades que se dan en la boca</p>
-        <a href="/medicos/odontologos/show" class="btn btn-primary">ver</a>
-    </div>
-    </div>
-     
-    <div class="card" style="width: 18rem;">
-    <img src="{{ asset('img/pediatras.jpg') }}" class="card-img-top" alt="...">
-    <div class="card-body">
-        <h5 class="card-title">Pediatras</h5>
-        <p class="card-text">El encargado del cuidado de los niños desde su nacimiento</p>
-        <a href="/medicos/pediatras/show" class="btn btn-primary">ver</a>
-    </div>
-    </div>
+        <div class="card shadow" style="width: 18rem; height:22rem;">
+            <img src="{{ asset('img/dentista.jpg') }}" class="card-img-top" alt="Odontólogos">
+            <div class="card-body">
+                <h5 class="card-title">Odontólogos</h5>
+                <p class="card-text">Encargados del tratamiento de enfermedades que se dan en la boca.</p>
+                <a href="/medicos/show" class="btn btn-primary">Ver</a>
+            </div>
+        </div>
 
-    <div class="card" style="width: 18rem;">
-    <img src="{{ asset('img/general.jpg') }}" class="card-img-top" alt="...">
-    <div class="card-body">
-        <h5 class="card-title">Medicos Generales</h5>
-        <p class="card-text">Es un especialista encargado de brindar una revisión general</p>
-        <a href="/medicos/generales/show" class="btn btn-primary">Ver</a>
-    </div>
-    </div>
-    </div>
+        <div class="card shadow" style="width: 18rem; height:22rem;">
+            <img src="{{ asset('img/pediatras.jpg') }}" class="card-img-top" alt="Pediatras">
+            <div class="card-body">
+                <h5 class="card-title">Pediatras</h5>
+                <p class="card-text">El encargado del cuidado de los niños desde su nacimiento.</p>
+                <a href="/medicos/show" class="btn btn-primary">Ver</a>
+            </div>
+        </div>
 
+        <div class="card shadow" style="width: 18rem; height:22rem;">
+            <img src="{{ asset('img/general.jpg') }}" class="card-img-top" alt="Médicos Generales">
+            <div class="card-body">
+                <h5 class="card-title">Médicos Generales</h5>
+                <p class="card-text">Especialistas encargados de brindar una revisión general.</p>
+                <a href="/medicos/show" class="btn btn-primary">Ver</a>
+            </div>
+        </div>
+    </div>
 </div>
-
 
 @endsection

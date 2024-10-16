@@ -1,89 +1,108 @@
 @extends('layouts.app')
 
-@section('title', 'Inicio')
+@section('title', 'Citas medicas')
 
 @section('content')
-
 <style>
-    #container{
-        margin-top:3%;
+    #container {
+        max-width: 99%;
+    }
+    .header {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+    .header h5 {
+        font-size: 2rem;
+        font-weight: 700;
+        color: #007bff; /* Azul primario */
+    }
+    .header p {
+        color: #6c757d; /* Texto secundario */
+        font-size: 1.1rem;
+    }
+    .btn-container {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+    .table-responsive {
+        border-radius: 0.5rem;
+        overflow: hidden; /* Para redondear las esquinas */
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); /* Sombra más intensa */
+    }
+    .table thead {
+        background-color: #007bff; /* Azul de encabezado */
+        color: white; /* Texto blanco en encabezado */
+    }
+    .table tbody tr:hover {
+        background-color: #f1f1f1; /* Color de fila al pasar el mouse */
+    }
+    .action-buttons {
+        display: flex;
+        gap: 5px; /* Espacio entre los botones */
     }
 </style>
+
 <div id="container" class="container">
-<div id="titulo"  class="card">
-    <center><div class="card-body">
-    <h5>Citas registradas</h5>
-    </div></center>
+    <div class="header">
+        <h5>Citas Registradas</h5>
+        <p>Aquí puedes gestionar todos las citas registradas en el sistema.</p>
     </div>
-    <br>
-    <a class="btn btn-primary" href="/citas/create">Añadir nuevas citas</a>
- <a class="btn btn-danger btn-sm" href="/products/create">PDF</a>
 
- <table class="table table-hover table-bordered mt-2">
- <tr>
- <td class="p-3 mb-2 bg-success-subtle text-success-emphasis border border-secondary">Código</td>
- <td class="p-3 mb-2 bg-success-subtle text-success-emphasis border border-secondary">Nombre del paciente</td>
- <td class="p-3 mb-2 bg-success-subtle text-success-emphasis border border-secondary">Medico</td>
- <td class="p-3 mb-2 bg-success-subtle text-success-emphasis border border-secondary">Especialidad</td>
- <td class="p-3 mb-2 bg-success-subtle text-success-emphasis border border-secondary">Fecha de la cita</td>
- <td class="p-3 mb-2 bg-success-subtle text-success-emphasis border border-secondary">Hora</td>
- <td class="p-3 mb-2 bg-success-subtle text-success-emphasis border border-secondary">Motivo</td>
+    <div class="btn-container">
+        <a class="btn btn-primary me-2" href="/citas/create">
+            <i class="fas fa-plus-circle"></i> Añadir Nueva Cita
+        </a>
+        <a class="btn btn-danger" href="/products/create">
+            <i class="fas fa-file-pdf"></i> PDF
+        </a>
+    </div>
 
- <td class="p-3 mb-2 bg-success-subtle text-success-emphasis border border-secondary">Acciones</td>
- </tr>
- {{-- Listado de categorias --}}
- <tr>
- <td class="border border-secondary">1</td>
- <td class="border border-secondary">Emerson</td>
- <td class="border border-secondary">Alberto</td>
- <td class="border border-secondary">General</td>
- <td class="border border-secondary">20-10-24</td>
- <td class="border border-secondary">7:00 AM</td>
- <td class="border border-secondary">Control de la tos</td>
- <td class="border border-secondary">
- <a class="btn btn-primary btn-sm" href="/citas/update">Modificar</a>
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered mt-2">
+            <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Nombre del paciente</th>
+                    <th>Medico</th>
+                    <th>Especialidad</th>
+                    <th>Fecha</th>
+                    <th>Hora</th>
+                    <th>Motivo</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{-- Listado de médicos --}}
+                @foreach ($cita as $item) 
+                    <tr>
+                        <td>{{ $item->codigo_cita }}</td>
+                        <td>{{ $item->paciente }}</td>
+                        <td>{{ $item->medico }}</td>
+                        <td>{{ $item->especialidad }}</td>
+                        <td>{{ $item->fecha }}</td>
+                        <td>{{ $item->hora }}</td>
+                        <td>{{ $item->motivo }}</td>
+                        <td class="action-buttons">
+                            <a class="btn btn-primary btn-sm" href="/citas/edit/{{ $item->codigo_cita }}" title="Modificar">
+                                <i class="fas fa-edit"></i> Modificar
+                            </a>
+                            <button class="btn btn-danger btn-sm" url="/citas/destroy/{{ $item->codigo_cita }}" onclick="destroy(this)" token="{{ csrf_token() }}" title="Eliminar">
+                                <i class="fas fa-trash-alt"></i> Eliminar
+                            </button>
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
+</div>
 
-<button class="btn btn-danger btn-sm" url="/clientes/destroy/" onclick="destroy(this)" token="{{ csrf_token() }}">Eliminar</button>
-
- <tr>
- </td>
-
- <td class="border border-secondary">1</td>
- <td class="border border-secondary">Emerson</td>
- <td class="border border-secondary">Alberto</td>
- <td class="border border-secondary">General</td>
- <td class="border border-secondary">20-10-24</td>
- <td class="border border-secondary">7:00 AM</td>
- <td class="border border-secondary">Control de la tos</td>
- <td class="border border-secondary">
- <a class="btn btn-primary btn-sm" href="/citas/update">Modificar</a>
-
-<button class="btn btn-danger btn-sm" url="/clientes/destroy/" onclick="destroy(this)" token="{{ csrf_token() }}">Eliminar</button>
-
- <tr>
- </td>
-
- <td class="border border-secondary">1</td>
- <td class="border border-secondary">Emerson</td>
- <td class="border border-secondary">Alberto</td>
- <td class="border border-secondary">General</td>
- <td class="border border-secondary">20-10-24</td>
- <td class="border border-secondary">7:00 AM</td>
- <td class="border border-secondary">Control de la tos</td>
- <td class="border border-secondary">
-<a class="btn btn-primary btn-sm" href="/citas/update/">Modificar</a>
-
-<button class="btn btn-danger btn-sm" url="/clientes/destroy/" onclick="destroy(this)" token="{{ csrf_token() }}">Eliminar</button>
-
-</td>
- </tr> 
- </table>
- 
 @endsection
+
 @section('scripts') 
- {{-- SweetAlert --}}
- <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
- {{-- JS --}}
- <script src="{{ asset('js/product.js') }}"></script>
- </div>
+{{-- SweetAlert --}}
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+{{-- JS --}}
+<script src="{{ asset('js/pacientes.js') }}"></script>
 @endsection

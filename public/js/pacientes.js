@@ -2,7 +2,7 @@
 destroy = function(e) { let url = e.getAttribute('url') 
     let token =e.getAttribute('token') 
     
-    Swal.fire({icon: 'question', title: 'Desea continuar?', text: 'El producto será eliminado', 
+    Swal.fire({icon: 'question', title: 'Desea continuar?', text: 'El elemento será eliminado', 
     showCancelButton:true, cancelButtonText: 'Cancelar', 
     confirmButtonText: 'Si'}).then((res)=>{if(res.isConfirmed)
     {
@@ -12,7 +12,7 @@ destroy = function(e) { let url = e.getAttribute('url')
     request.onload = () => { if
     (request.status==200) { 
     e.closest('tr').remove() 
-    Swal.fire({ icon:'success', text: 'Producto eliminado'
+    Swal.fire({ icon:'success', text: 'Eliminado con exito'
     }) 
      } } 
     request.onerror = err => rejects(err); 

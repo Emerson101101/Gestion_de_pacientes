@@ -1,60 +1,108 @@
 @extends('layouts.app')
 
-@section('title', 'pacientes')
+@section('title', 'Pacientes')
 
 @section('content')
+<style>
+    #container {
+        max-width: 99%;
+    }
+    .header {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+    .header h5 {
+        font-size: 2rem;
+        font-weight: 700;
+        color: #007bff; /* Azul primario */
+    }
+    .header p {
+        color: #6c757d; /* Texto secundario */
+        font-size: 1.1rem;
+    }
+    .btn-container {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+    .table-responsive {
+        border-radius: 0.5rem;
+        overflow: hidden; /* Para redondear las esquinas */
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); /* Sombra más intensa */
+    }
+    .table thead {
+        background-color: #007bff; /* Azul de encabezado */
+        color: white; /* Texto blanco en encabezado */
+    }
+    .table tbody tr:hover {
+        background-color: #f1f1f1; /* Color de fila al pasar el mouse */
+    }
+    .action-buttons {
+        display: flex;
+        gap: 5px; /* Espacio entre los botones */
+    }
+</style>
 
-
-<div class="container">
-    
-<div class="card">
-    <center><div class="card-body">
-    <h5>Pacientes registrados</h5>
-    </div></center>
+<div id="container" class="container">
+    <div class="header">
+        <h5>Pacientes Registrados</h5>
+        <p>Aquí puedes gestionar todos los pacientes registrados en el sistema.</p>
     </div>
-    <br>
-    <a class="btn btn-primary" href="/pacientes/create">Añadir nuevo paciente</a>
- <a class="btn btn-danger btn-sm" href="/products/create">PDF</a>
 
- <table class="table table-hover table-bordered mt-2">
- <tr>
- <td class="p-3 mb-2 bg-success-subtle text-success-emphasis border border-secondary">Código</td>
- <td class="p-3 mb-2 bg-success-subtle text-success-emphasis border border-secondary">Nombre</td>
- <td class="p-3 mb-2 bg-success-subtle text-success-emphasis border border-secondary">Edad</td>
- <td class="p-3 mb-2 bg-success-subtle text-success-emphasis border border-secondary">Telefono</td>
- <td class="p-3 mb-2 bg-success-subtle text-success-emphasis border border-secondary">Fecha de Consulta</td>
- <td class="p-3 mb-2 bg-success-subtle text-success-emphasis border border-secondary">Direccion</td>
- <td class="p-3 mb-2 bg-success-subtle text-success-emphasis border border-secondary">Motivo de Consulta</td>
+    <div class="btn-container">
+        <a class="btn btn-primary me-2" href="/pacientes/create">
+            <i class="fas fa-plus-circle"></i> Añadir Nuevo Paciente
+        </a>
+        <a class="btn btn-danger" href="/reportePacientes">
+            <i class="fas fa-file-pdf"></i> PDF
+        </a>
+    </div>
 
- <td class="p-3 mb-2 bg-success-subtle text-success-emphasis border border-secondary"> Acciones</td>
- </tr>
- {{-- Listado de pacientes --}}
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered mt-2">
+            <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Nombre</th>
+                    <th>Edad</th>
+                    <th>Teléfono</th>
+                    <th>Fecha de Consulta</th>
+                    <th>Dirección</th>
+                    <th>Motivo de Consulta</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{-- Listado de pacientes --}}
+                @foreach ($pacientes as $item)
+                    <tr>
+                        <td>{{ $item->codigo_paciente }}</td>
+                        <td>{{ $item->nombre }}</td>
+                        <td>{{ $item->edad }}</td>
+                        <td>{{ $item->telefono }}</td>
+                        <td>{{ $item->fecha }}</td>
+                        <td>{{ $item->direccion }}</td>
+                        <td>{{ $item->detallesconsulta }}</td>
+                        <td class="action-buttons">
+                            <a class="btn btn-primary btn-sm" href="/pacientes/edit/{{ $item->codigo_paciente }}" title="Modificar">
+                                <i class="fas fa-edit"></i> Modificar
+                            </a>
+                            <button class="btn btn-danger btn-sm" url="/pacientes/destroy/{{ $item->codigo_paciente }}" onclick="destroy(this)" token="{{ csrf_token() }}" title="Eliminar">
+                                <i class="fas fa-trash-alt"></i> Eliminar
+                            </button>
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
+</div>
 
- @foreach ($pacientes as $item) 
- <tr>
- <td class="border border-secondary">{{$item->codigo_paciente}}</td>
- <td class="border border-secondary">{{$item->nombre }}</td>
- <td class="border border-secondary">{{$item->edad }}</td>
- <td class="border border-secondary">{{$item->telefono }}</td>
- <td class="border border-secondary">{{$item->fecha }}</td>
- <td class="border border-secondary">{{$item->direccion }}</td>
- <td class="border border-secondary">{{$item->detallesconsulta }}</td>
- <td class="border border-secondary">
- <a class="btn btn-primary btn-sm" href="/pacientes/edit/{{$item->codigo_paciente}}">Modificar</a>
-
-<button class="btn btn-danger btn-sm" url="/pacientes/destroy/{{$item->codigo_paciente}}" onclick="destroy(this)" token="{{ csrf_token() }}">Eliminar</button>
-
- </td class="border border-secondary">
- </tr>
-
- @endforeach
- </table>
- 
 @endsection
-@section('scripts') 
- {{-- SweetAlert --}}
- <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
- {{-- JS --}}
- <script src="{{ asset('js/pacientes.js') }}"></script>
 
+@section('scripts') 
+{{-- SweetAlert --}}
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+{{-- JS --}}
+<script src="{{ asset('js/pacientes.js') }}"></script>
 @endsection

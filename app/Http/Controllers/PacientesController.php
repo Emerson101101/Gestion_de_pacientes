@@ -5,6 +5,7 @@ use App\Models\pacientes;
 
 use Illuminate\Http\Request;
 
+
 class PacientesController extends Controller
 {
     public function __construct()
@@ -17,7 +18,9 @@ class PacientesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
+    
     {
+        $pacientes = Pacientes::paginate(10);
         $pacientes = pacientes::All();
         
         return view('/pacientes/show')->with(['pacientes'=>$pacientes]);
@@ -43,14 +46,21 @@ class PacientesController extends Controller
     public function store(Request $request)
     {
         $data = request()->validate([ 
-            'nombre'=> 'required',
-            'edad'=> 'required',
-            'telefono'=> 'required',
-            'fecha'=> 'required',
-            'direccion'=> 'required',
-            'detallesconsulta'=> 'required'
-
-            ]); 
+            'nombre' => 'required|string|regex:/^[A-Za-záéíóúÁÉÍÓÚñÑ\s]+$/',
+            'edad' => 'required|integer',
+            'telefono' => 'required|string',
+            'fecha' => 'required|date',
+            'direccion' => 'required|string',
+            'detallesconsulta' => 'required|string',
+        ], [
+            'nombre.required' => 'El campo nombre es obligatorio.',
+            'nombre.regex' => 'El campo nombre solo debe contener letras y espacios.',
+            'edad.required' => 'El campo edad es obligatorio.',
+            'telefono.required' => 'El campo teléfono es obligatorio.',
+            'fecha.required' => 'El campo fecha es obligatorio.',
+            'direccion.required' => 'El campo dirección es obligatorio.',
+            'detallesconsulta.required' => 'El campo detalles de consulta es obligatorio.',
+        ]);
             // Enviar insert 
             pacientes::create($data); 
             // Redireccionar 
@@ -92,13 +102,22 @@ class PacientesController extends Controller
     public function update(Request $request, pacientes $pacientes )
     {
         $data = request()->validate([ 
-            'nombre' => 'required',
-            'edad'=> 'required',
-            'telefono'=> 'required',
-            'fecha'=> 'required',
-            'direccion'=> 'required',
-            'detallesconsulta'=> 'required'
-            ]); 
+            'nombre' => 'required|string|regex:/^[A-Za-záéíóúÁÉÍÓÚñÑ\s]+$/',
+            'edad' => 'required|integer',
+            'telefono' => 'required|string',
+            'fecha' => 'required|date',
+            'direccion' => 'required|string',
+            'detallesconsulta' => 'required|string',
+        ], [
+            'nombre.required' => 'El campo nombre es obligatorio.',
+            'nombre.regex' => 'El campo nombre solo debe contener letras y espacios.',
+            'edad.required' => 'El campo edad es obligatorio.',
+            'edad.integer' => 'El campo edad solo debe contener números.',
+            'telefono.required' => 'El campo teléfono es obligatorio.',
+            'fecha.required' => 'El campo fecha es obligatorio.',
+            'direccion.required' => 'El campo dirección es obligatorio.',
+            'detallesconsulta.required' => 'El campo detalles de consulta es obligatorio.',
+        ]);
 
             $pacientes->nombre = $data['nombre']; 
             $pacientes->edad = $data['edad']; 

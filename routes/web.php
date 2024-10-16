@@ -3,8 +3,12 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PacientesController; 
 use App\Http\Controllers\MedicosController; 
-use App\Http\Controllers\EspecialidadesController; 
+use App\Http\Controllers\EspecialidadesController;
+use App\Http\Controllers\CitaController; 
+use App\Http\Controllers\ReportController; 
+use App\Http\Controllers\RecetaController; 
 use App\Http\Controllers\Auth\RegisterController; 
+
 
 
 
@@ -21,6 +25,12 @@ use App\Http\Controllers\Auth\RegisterController;
 
 Route::get('/home', function () {  return view('home');
 })->middleware('auth');
+
+Route::get('/reportes/show', function () {  return view('/reportes/show');
+});
+
+Route::get('/reportePacientes', [ReportController::class,'reporteUno']);
+Route::get('/reporteUsuarios', [ReportController::class,'reporteSeis']);
 
 //////////////////Usuario///////////////
 
@@ -44,12 +54,12 @@ Route::get('/especialidades/show', [EspecialidadesController::class, 'index']);
 
 Route::get('/especialidades/create', [EspecialidadesController::class, 'create']); 
 
-Route::get('/especialidades/edit/{especialidades}', [EspecialidadesController::class, 'edit']); 
+Route::get('/especialidades/edit/{especialidad}', [EspecialidadesController::class, 'edit']); 
 
 Route::post('/especialidades/store', [EspecialidadesController::class, 'store']); 
 // Ruta para modificar producto
 
-Route::put('/especialidades/update/{especialidades}', [EspecialidadesController::class, 'update']); 
+Route::put('/especialidades/update/{especialidad}', [EspecialidadesController::class, 'update']); 
 // Ruta para eliminar producto
 
 Route::delete('/especialidades/destroy/{id}', [EspecialidadesController::class, 'destroy']);
@@ -74,70 +84,54 @@ Route::delete('/pacientes/destroy/{id}', [PacientesController::class, 'destroy']
 
 ////////////////////medicos//////////////////
 
-
 Route::get('/medicos/views', function () {
     return view('medicos/views');
 });
-Route::get('/medicos/odontologos/show', [MedicosController::class, 'index']);
+Route::get('/medicos/show', [MedicosController::class, 'index']);
 
-Route::get('/medicos/pediatras/show', function () {
-    return view('medicos/pediatras/show');
-});
+Route::get('/medicos/create', [MedicosController::class, 'create']); 
 
-Route::get('/medicos/pediatras/create', function () {
-    return view('/medicos/pediatras/create');
-});
+Route::get('/medicos/edit/{medico}', [MedicosController::class, 'edit']); 
 
-Route::get('/medicos/pediatras/update', function () {
-    return view('/medicos/pediatras/update');
-});
+Route::post('/medicos/store', [MedicosController::class, 'store']); 
+// Ruta para modificar producto
 
-Route::get('/medicos/odontologos/show', function () {
-    return view('medicos/odontologos/show');
-});
+Route::put('/medicos/update/{medico}', [MedicosController::class, 'update']); 
 
-Route::get('/medicos/odontologos/create', function () {
-    return view('/medicos/odontologos/create');
-});
 
-Route::get('/medicos/odontologos/update', function () {
-    return view('/medicos/odontologos/update');
-});
+Route::delete('/medicos/destroy/{id}', [MedicosController::class, 'destroy']);
 
-Route::get('/medicos/generales/show', function () {
-    return view('medicos/generales/show');
-});
-
-Route::get('/medicos/generales/create', function () {
-    return view('/medicos/generales/create');
-});
-
-Route::get('/medicos/generales/update', function () {
-    return view('/medicos/generales/update');
-});
-
-Route::get('/especialidades/show', function () {
-    return view('especialidades/show');
-});
-Route::get('/especialidades/create', function () {
-    return view('especialidades/create');
-});
-Route::get('/especialidades/update', function () {
-    return view('especialidades/update');
-});
 ///////////////////////////////////777
 
-Route::get('/citas/show', function () {
-    return view('citas/show');
-});
-Route::get('/citas/create', function () {
-    return view('citas/create');
-});
-Route::get('/citas/update', function () {
-    return view('citas/update');
-});
+Route::get('/citas/show', [CitaController::class, 'index']);
+
+Route::get('/citas/create', [CitaController::class, 'create']); 
+
+Route::get('/citas/edit/{citas}', [CitaController::class, 'edit']);
+
+Route::post('/citas/store', [CitaController::class, 'store']); 
+// Ruta para modificar producto
+
+Route::put('/citas/update/{citas}', [CitaController::class, 'update']); 
 
 
+Route::delete('/citas/destroy/{id}', [CitaController::class, 'destroy']);
+
+////////
+
+Route::get('/recetas/show', [RecetaController::class, 'index']);
+
+Route::get('/recetas/create', [RecetaController::class, 'create']); 
+
+Route::get('/recetas/edit/{receta}', [RecetaController::class, 'edit']);
+
+Route::post('/recetas/store', [RecetaController::class, 'store']); 
+// Ruta para modificar producto
+
+Route::put('/recetas/update/{receta}', [RecetaController::class, 'update']); 
+
+
+Route::delete('/recetas/destroy/{id}', [RecetaController::class, 'destroy']);
 
 
 Auth::routes();

@@ -143,13 +143,11 @@ class RegisterController extends Controller
      {
          $data = request()->validate([ 
              'name' => 'required',
-             'email'=> 'required',
-             'password'=> 'required',
+             'email'=> 'required'
              ]); 
  
              $user->name = $data['name']; 
              $user->email = $data['email']; 
-             $user->password = $data['password'];  
              $user->updated_at = now();
              $user->save(); 
              // Redireccionar 

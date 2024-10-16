@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>login-BitTeff</title>
+    <title>Login - BitTeff</title>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
@@ -15,36 +15,33 @@
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet">
 </head>
 <style>
-    .logo-login{
-            width: 60vh;
-            margin-left:90%;
-            height: 10vh;
+    .logo-login {
+        max-width: 190px;
+        height:40px;
+        margin: 0 auto;
+        display: block;
     }
-
+  
+   
+    .nav-link:hover {
+        color: #ffdd57 !important;
+    }
 </style>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-lg p-3 mb-2 bg-info text-dark">
+        <nav class="navbar navbar-expand-lg text-dark">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-        <a  href="/home"><img  class="logo-login" src="{{ asset('img/logo.png') }}"></a>
-
-                </a>
+                
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
-
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
+                    <ul class="navbar-nav me-auto"></ul>
                     <ul class="navbar-nav ms-auto">
-                        <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
@@ -58,26 +55,23 @@
                                 </li>
                             @endif
                         @else
+                        <li class="nav-item dropdown">
+    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+        {{ Auth::user()->name }}
+    </a>
 
-                   
+    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item" href="{{ route('logout') }}"
+           onclick="event.preventDefault();
+           document.getElementById('logout-form').submit();">
+            Cerrar Sesión
+        </a>
 
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        Cerra Sesion
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+            @csrf
+        </form>
+    </div>
+</li>
                         @endguest
                     </ul>
                 </div>

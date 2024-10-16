@@ -20,7 +20,7 @@ class EspecialidadesController extends Controller
     {
         $especialidad = especialidad::All();
         
-        return view('/especialidades/show')->with(['especialidad'=>$especialidad]);
+        return view('/especialidades/show',['especialidad'=>$especialidad]);
 }
 
 
@@ -43,9 +43,10 @@ class EspecialidadesController extends Controller
     public function store(Request $request)
     {
         $data = request()->validate([ 
-            'nombre'=> 'required',
-
-            ]); 
+            'nombre' => 'required|string',
+        ], [
+            'nombre.required' => 'El campo nombre es obligatorio.',
+        ]);
             // Enviar insert 
             especialidad::create($data); 
             // Redireccionar 
@@ -73,7 +74,7 @@ class EspecialidadesController extends Controller
     {
        
 
-        return view('especialidad/update')->with(['especialidad'=>$especialidad]);
+        return view('especialidades/update')->with(['especialidad'=>$especialidad]);
         
     }
 
@@ -87,14 +88,16 @@ class EspecialidadesController extends Controller
     public function update(Request $request, especialidad $especialidad )
     {
         $data = request()->validate([ 
-            'nombre' => 'required',
-            ]); 
+            'nombre' => 'required|string',
+        ], [
+            'nombre.required' => 'El campo nombre es obligatorio.',
+        ]);
 
             $especialidad->nombre = $data['nombre']; 
             $especialidad->updated_at = now();
             $especialidad->save(); 
             // Redireccionar 
-            return redirect('/especialidad/show'); 
+            return redirect('/especialidades/show'); 
      
     }
 

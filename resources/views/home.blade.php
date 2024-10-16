@@ -19,6 +19,7 @@
     
    }
    .contenido{
+  
     margin-top:2%;
       max-width:100%;
       background:white;
@@ -27,6 +28,7 @@
         background-size: cover; /* O usa 'contain' según lo que necesites */
         background-repeat: no-repeat;
         background-position: center; 
+    
    } 
    
    #sistema{
@@ -40,8 +42,8 @@
    
   
 </style>
-  <!---p-3 mb-2 bg-body-secondary---->
-<body class="p-3 mb-2 bg-body text-dark">
+<body class="p-3 mb-2 bg-body-secondary">
+<!--<body class="p-3 mb-2 bg-body text-dark">--->
 <div id="encabezado" class="p-3 mb-2 bg-info text-dark">
       <center><div class="contenido">
         <br>
@@ -57,7 +59,7 @@
 </div>
 
 
-<div class="container">
+<div class="container" >
       
         
         <br>
@@ -66,15 +68,27 @@
             <div class="col-4">
               <div class="card">
                 <div class="card-body">
+                  
+
+                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                      99+
+                      <span class="visually-hidden">unread messages</span>
+                    </span>
+     
                   <a class="icon-link text-success text-info-emphasis" href="/citas/show" >
                     <i class="bi bi-amazon text-info-emphasis " style="font-size: 4rem;"></i>
                   <br>
+                  
                   <img class="ext-info-emphasis" src="{{ asset('img/citas.png') }}" alt=""style="margin-left:-1%;">
                   
                     Citas de las consultas
+                    
                 </a>
+                
                 </div>
+                
               </div>
+              
 
             </div>
 
@@ -130,7 +144,7 @@
             <div class="col-4" style="margin-top:3%">
               <div class="card">
                 <div class="card-body">
-                <a class="icon-link text-success text-info-emphasis" href="/clientes/show">
+                <a class="icon-link text-success text-info-emphasis" href="/reportes/show">
                   <i class="bi bi-clipboard2-minus text-success text-info-emphasis" style="font-size: 4rem;"></i>
                   <br>
                   <img class="ext-info-emphasis" src="{{ asset('img/repo.png') }}" alt="">
