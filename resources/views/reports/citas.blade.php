@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pacientes Registrados</title>
+    <title>Citas Médicas Registradas</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -44,8 +44,8 @@
             font-size: 0.9rem; /* Tamaño de fuente más pequeño */
         }
         th {
-            background-color: #007bff;
-            color: white;
+            background-color: #007bff; /* Azul de encabezado */
+            color: white; /* Texto blanco en encabezado */
             font-weight: bold;
         }
         tbody tr:nth-child(even) {
@@ -60,8 +60,8 @@
 <body>
     <div id="container">
         <div class="header">
-            <h5>Pacientes Registrados</h5>
-            <p>Reporte de todos los pacientes registrados en el sistema.</p>
+            <h5>Citas Médicas Registradas</h5>
+            <p>Reporte de todas las citas médicas registradas en el sistema.</p>
         </div>
 
         <div class="table-responsive">
@@ -69,25 +69,25 @@
                 <thead>
                     <tr>
                         <th>Código</th>
-                        <th>Nombre</th>
-                        <th>Edad</th>
-                        <th>Teléfono</th>
-                        <th>Fecha de Consulta</th>
-                        <th>Dirección</th>
-                        <th>Motivo de Consulta</th>
+                        <th>Nombre del paciente</th>
+                        <th>Médico</th>
+                        <th>Especialidad</th>
+                        <th>Fecha</th>
+                        <th>Hora</th>
+                        <th>Motivo</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {{-- Listado de pacientes --}}
-                    @foreach ($data as $item)
+                    {{-- Listado de citas médicas --}}
+                    @foreach ($citas as $item)
                         <tr>
-                            <td>{{ $item->codigo_paciente }}</td>
-                            <td>{{ $item->nombre }}</td>
-                            <td>{{ $item->edad }}</td>
-                            <td>{{ $item->telefono }}</td>
+                            <td>{{ $item->codigo_cita }}</td>
+                            <td>{{ $item->paciente }}</td>
+                            <td>{{ $item->medico }}</td>
+                            <td>{{ $item->especialidad }}</td>
                             <td>{{ $item->fecha }}</td>
-                            <td>{{ $item->direccion }}</td>
-                            <td>{{ $item->detallesconsulta }}</td>
+                            <td>{{ $item->hora }}</td>
+                            <td>{{ $item->motivo }}</td>
                         </tr>
                     @endforeach
                 </tbody>

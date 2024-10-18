@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\receta;
+use App\Models\medicamento;
 use Illuminate\Http\Request;
 
 class RecetaController extends Controller
@@ -16,12 +17,22 @@ class RecetaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    
     {
-        $receta = receta::All();
+        $receta = receta::select(
+            "recetas.codigo_receta",
+            "recetas.horario",
+            "recetas.fecha",
+            "recetas.dias",
+            "recetas.dosis",
+            "medicamento.nombre as medicamento"
+        )
+        ->join("medicamento", "medicamento.codigo_medicamento", "=", "recetas.medicamento") 
+        ->get();
         
-        return view('/recetas/show')->with(['receta'=>$receta]);
+        return view('recetas.show')->with(['receta' => $receta]);
     }
+    
+    
 
     /**
      * Show the form for creating a new resource.
@@ -30,7 +41,9 @@ class RecetaController extends Controller
      */
     public function create()
     {
-        return view('/recetas/create'); 
+        $medicamento = medicamento::all();
+
+        return view('/recetas/create')->with(['medicamento'=>$medicamento]); 
     }
 
     /**
@@ -42,13 +55,13 @@ class RecetaController extends Controller
     public function store(Request $request)
     {
         $data = request()->validate([ 
-            'nombre' => 'required|string',
+            'medicamento' => 'required|string',
             'horario' => 'required|string',
             'fecha' => 'required|date',
             'dias' => 'required|string',
             'dosis' => 'required|string',
         ], [
-            'nombre.required' => 'El campo nombre es obligatorio.',
+            'medicamento.required' => 'El campo medicamento es obligatorio.',
             'horario.required' => 'El campo horario es obligatorio.',
             'fecha.required' => 'El campo fecha es obligatorio.',
             'dias.required' => 'El campo días es obligatorio.',
@@ -79,7 +92,9 @@ class RecetaController extends Controller
      */
     public function edit(receta $receta)
     {
-        return view('recetas/update')->with(['receta'=>$receta]);
+        $medicamento = medicamento::all(); 
+
+        return view('recetas/update')->with(['receta'=>$receta,'medicamento'=>$medicamento]);
         
     }
 
@@ -93,13 +108,13 @@ class RecetaController extends Controller
     public function update(Request $request, receta $receta)
     {
         $data = request()->validate([ 
-            'nombre' => 'required|string',
+            'medicamento' => 'required|string',
             'horario' => 'required|string',
             'fecha' => 'required|date',
             'dias' => 'required|string',
             'dosis' => 'required|string',
         ], [
-            'nombre.required' => 'El campo nombre es obligatorio.',
+            'medicamento.required' => 'El campo medicamento es obligatorio.',
             'horario.required' => 'El campo horario es obligatorio.',
             'fecha.required' => 'El campo fecha es obligatorio.',
             'dias.required' => 'El campo días es obligatorio.',
@@ -107,7 +122,7 @@ class RecetaController extends Controller
            
         ]);
 
-            $receta->nombre = $data['nombre']; 
+            $receta->medicamento = $data['medicamento']; 
             $receta->horario = $data['horario']; 
             $receta->fecha = $data['fecha'];    
             $receta->dias = $data['dias']; 

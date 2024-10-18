@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pacientes Registrados</title>
+    <title>Especialidades Registradas</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -27,7 +27,7 @@
             color: #007bff;
         }
         .header p {
-            color: #6c757d;
+            color: #6c757d; /* Texto secundario */
             font-size: 1rem;
         }
         .table-responsive {
@@ -35,17 +35,18 @@
         }
         table {
             width: 100%;
-            border-collapse: collapse;
+            border-collapse: collapse; /* Mantener el colapso de bordes */
+            margin-top: 20px;
         }
         th, td {
-            padding: 8px; /* Reducir padding para más espacio */
+            padding: 10px; /* Ajustar el padding para más espacio */
             text-align: left;
             border: 1px solid #dee2e6;
-            font-size: 0.9rem; /* Tamaño de fuente más pequeño */
+            font-size: 0.9rem; /* Tamaño de fuente adecuado */
         }
         th {
-            background-color: #007bff;
-            color: white;
+            background-color: #007bff; /* Azul de encabezado */
+            color: white; /* Texto blanco en encabezado */
             font-weight: bold;
         }
         tbody tr:nth-child(even) {
@@ -53,15 +54,15 @@
         }
         td {
             word-wrap: break-word; /* Permitir saltos de línea */
-            max-width: 150px; /* Limitar ancho para evitar desbordamientos */
+            max-width: 200px; /* Limitar ancho para evitar desbordamientos */
         }
     </style>
 </head>
 <body>
     <div id="container">
         <div class="header">
-            <h5>Pacientes Registrados</h5>
-            <p>Reporte de todos los pacientes registrados en el sistema.</p>
+            <h5>Especialidades Registradas</h5>
+            <p>Reporte de todas las especialidades registradas en el sistema.</p>
         </div>
 
         <div class="table-responsive">
@@ -70,24 +71,14 @@
                     <tr>
                         <th>Código</th>
                         <th>Nombre</th>
-                        <th>Edad</th>
-                        <th>Teléfono</th>
-                        <th>Fecha de Consulta</th>
-                        <th>Dirección</th>
-                        <th>Motivo de Consulta</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {{-- Listado de pacientes --}}
+                    {{-- Listado de especialidades --}}
                     @foreach ($data as $item)
                         <tr>
-                            <td>{{ $item->codigo_paciente }}</td>
+                            <td>{{ $item->codico_especialidad }}</td>
                             <td>{{ $item->nombre }}</td>
-                            <td>{{ $item->edad }}</td>
-                            <td>{{ $item->telefono }}</td>
-                            <td>{{ $item->fecha }}</td>
-                            <td>{{ $item->direccion }}</td>
-                            <td>{{ $item->detallesconsulta }}</td>
                         </tr>
                     @endforeach
                 </tbody>

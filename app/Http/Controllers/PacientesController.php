@@ -20,7 +20,7 @@ class PacientesController extends Controller
     public function index()
     
     {
-        $pacientes = Pacientes::paginate(10);
+      
         $pacientes = pacientes::All();
         
         return view('/pacientes/show')->with(['pacientes'=>$pacientes]);
@@ -48,7 +48,7 @@ class PacientesController extends Controller
         $data = request()->validate([ 
             'nombre' => 'required|string|regex:/^[A-Za-záéíóúÁÉÍÓÚñÑ\s]+$/',
             'edad' => 'required|integer',
-            'telefono' => 'required|string',
+            'telefono' => 'required|integer',
             'fecha' => 'required|date',
             'direccion' => 'required|string',
             'detallesconsulta' => 'required|string',
@@ -57,6 +57,7 @@ class PacientesController extends Controller
             'nombre.regex' => 'El campo nombre solo debe contener letras y espacios.',
             'edad.required' => 'El campo edad es obligatorio.',
             'telefono.required' => 'El campo teléfono es obligatorio.',
+            'telefono.integer' => 'El campo telefono solo debe contener números.',
             'fecha.required' => 'El campo fecha es obligatorio.',
             'direccion.required' => 'El campo dirección es obligatorio.',
             'detallesconsulta.required' => 'El campo detalles de consulta es obligatorio.',
@@ -104,7 +105,7 @@ class PacientesController extends Controller
         $data = request()->validate([ 
             'nombre' => 'required|string|regex:/^[A-Za-záéíóúÁÉÍÓÚñÑ\s]+$/',
             'edad' => 'required|integer',
-            'telefono' => 'required|string',
+            'telefono' => 'required|integer',
             'fecha' => 'required|date',
             'direccion' => 'required|string',
             'detallesconsulta' => 'required|string',
@@ -114,6 +115,7 @@ class PacientesController extends Controller
             'edad.required' => 'El campo edad es obligatorio.',
             'edad.integer' => 'El campo edad solo debe contener números.',
             'telefono.required' => 'El campo teléfono es obligatorio.',
+            'telefono.integer' => 'El campo telefono solo debe contener números.',
             'fecha.required' => 'El campo fecha es obligatorio.',
             'direccion.required' => 'El campo dirección es obligatorio.',
             'detallesconsulta.required' => 'El campo detalles de consulta es obligatorio.',

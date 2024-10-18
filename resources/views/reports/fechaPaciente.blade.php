@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Actualizar Usuario')
+@section('title', 'Añadir nuevo pediatra')
 
 @section('content')
 
@@ -38,47 +38,43 @@
     .btn-primary {
         border-radius: 5px; /* Bordes redondeados para botones */
     }
+
+    .is-invalid {
+        border-color: #dc3545; /* Color de borde para errores */
+    }
+
+    .invalid-feedback {
+        display: block; /* Mostrar feedback de errores */
+    }
 </style>
 
 <div class="header">
-    <h1>Modificar Usuario</h1>
-    <h5>Formulario para actualizar usuarios</h5>
+    <h1>Reporte Cliente</h1>
+    <h5>Formulario para reporte de pacientes por fecha</h5>
 </div>
 <hr>
 
 <div id="container">
-    <form action="/auth/update/{{$user->id}}" method="POST">
+    <form action="/fechaPaciente" method="GET">
         @csrf
-        @method('PUT')
 
-        <div class="row mb-3">
+        <div class="row mb-3 justify-content-center">
             <div class="col-md-6">
-                <label for="name" class="form-label">Nombre</label>
-                <input type="text" class="form-control" id="name" name="name" value="{{$user->name}}">
-                @error('name') 
-                <span class="invalid-feedback d-block" role="alert">
-                    <strong>{{$message}}</strong>
-                </span>  
-                @enderror
-            </div>
-
-            <div class="col-md-6">
-                <label for="email" class="form-label">Email</label>
-                <input type="text" class="form-control" id="email" name="email" value="{{$user->email}}">
-                @error('email') 
-                <span class="invalid-feedback d-block" role="alert">
-                    <strong>{{$message}}</strong>
-                </span>  
-                @enderror
+                <label for="fecha" class="form-label">Fecha</label>
+                <input type="date" class="form-control @error('fecha') is-invalid @enderror" name="fecha" id="fecha">
+                @error('fecha') 
+                <div class="invalid-feedback">
+                    <strong>{{ $message }}</strong>
+                </div> 
+                @enderror 
             </div>
         </div>
 
         <div class="text-center mt-4">
             <button class="btn btn-primary">Guardar</button>
-            <a class="btn btn-secondary" href="/auth/show" style="margin-left: 2%;">Volver</a>
-            
-        </div> 
-    </form> 
+            <a class="btn btn-secondary" href="/pacientes/show" style="margin-left: 10px;">Volver</a>
+        </div>
+    </form>
 </div>
 
 @endsection

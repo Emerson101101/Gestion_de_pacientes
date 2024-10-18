@@ -50,7 +50,7 @@
                     </div>
                     <h5 class="card-title">Reporte de Citas Médicas</h5>
                     <p class="card-text text-muted">PDF de todas las citas médicas registradas en el sistema.</p>
-                    <a class="btn btn-primary" href="/reporteCitasMedicas">
+                    <a class="btn btn-primary" href="/reporteCitas">
                         <i class="fas fa-file-pdf"></i>PDF
                     </a>
                 </div>

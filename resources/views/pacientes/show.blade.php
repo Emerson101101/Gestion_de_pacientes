@@ -50,13 +50,18 @@
     </div>
 
     <div class="btn-container">
+    <div class="action-buttons">
         <a class="btn btn-primary me-2" href="/pacientes/create">
             <i class="fas fa-plus-circle"></i> Añadir Nuevo Paciente
         </a>
-        <a class="btn btn-danger" href="/reportePacientes">
+        <a class="btn btn-danger me-2" href="/reportePacientes">
             <i class="fas fa-file-pdf"></i> PDF
         </a>
+        <a class="btn btn-danger" href="/SeleccionarFecha">
+            <i class="fas fa-file-pdf"></i> PDF por fecha
+        </a>
     </div>
+</div>
 
     <div class="table-responsive">
         <table class="table table-striped table-bordered mt-2">

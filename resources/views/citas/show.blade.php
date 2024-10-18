@@ -49,14 +49,23 @@
         <p>Aquí puedes gestionar todos las citas registradas en el sistema.</p>
     </div>
 
-    <div class="btn-container">
-        <a class="btn btn-primary me-2" href="/citas/create">
-            <i class="fas fa-plus-circle"></i> Añadir Nueva Cita
-        </a>
-        <a class="btn btn-danger" href="/products/create">
-            <i class="fas fa-file-pdf"></i> PDF
-        </a>
+   <div class="d-flex justify-content-center mb-3">
+    <a class="btn btn-primary me-2" href="/citas/create">
+        <i class="fas fa-plus-circle"></i> Añadir Nueva Cita
+    </a>
+    <a class="btn btn-danger me-2" href="/reporteCitas">
+        <i class="fas fa-file-pdf"></i> PDF
+    </a>
+    <div class="btn-group dropend" role="group">
+        <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+            PDF por selección
+        </button>
+        <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/SeleccionarCita">Hacer PDF por seleccion</a></li>
+        </ul>
     </div>
+</div>
+
 
     <div class="table-responsive">
         <table class="table table-striped table-bordered mt-2">

@@ -13,13 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('recetas', function (Blueprint $table) {
-            $table->id('codigo_receta');
+        Schema::create('medicamento', function (Blueprint $table) {
+            $table->id('codigo_medicamento');
             $table->string('nombre');
-            $table->string('horario');
-            $table->string('fecha');
-            $table->string('dias');
-            $table->string('dosis');
+            $table->string('fechaI');
+            $table->string('fechaV');
+            $table->string('forma');//forma farmaceutica, si es tableta, clapusla, etc
+            $table->string('imagen')->nullable(); 
             $table->timestamps();
         });
     }
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('recetas');
+        Schema::dropIfExists('medicamento');
     }
 };

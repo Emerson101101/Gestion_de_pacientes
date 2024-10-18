@@ -101,7 +101,7 @@
 
         <div class="text-center mt-4">
             <button class="btn btn-primary">Guardar</button>
-            <a class="btn btn-secondary" href="/medicos/show" style="margin-left: 10px;">Volver</a>
+            <a class="btn btn-secondary" href="/medicos/views" style="margin-left: 10px;">Volver</a>
         </div>
     </form>
 </div>

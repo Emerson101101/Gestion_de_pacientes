@@ -50,12 +50,18 @@
     </div>
 
     <div class="btn-container">
-        <a class="btn btn-primary me-2" href="/medicos/create">
-            <i class="fas fa-plus-circle"></i> Añadir Nuevo Médico
-        </a>
-        <a class="btn btn-danger" href="/products/create">
-            <i class="fas fa-file-pdf"></i> PDF
-        </a>
+    <a class="btn btn-primary me-2" href="/medicos/create">
+    <i class="fas fa-plus-circle"></i> Añadir Nuevo Médico
+    </a>
+
+    <a class="btn btn-danger me-2" href="/reporteMedicos">
+        <i class="fas fa-file-pdf"></i> PDF
+    </a>
+
+    <a class="btn btn-danger" href="/SeleccionarEspecialidad">
+        <i class="fas fa-file-pdf"></i> PDF por Especialidad
+    </a>
+
     </div>
 
     <div class="table-responsive">

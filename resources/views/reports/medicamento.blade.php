@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pacientes Registrados</title>
+    <title>Reporte Medicamento</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -60,8 +60,8 @@
 <body>
     <div id="container">
         <div class="header">
-            <h5>Pacientes Registrados</h5>
-            <p>Reporte de todos los pacientes registrados en el sistema.</p>
+            <h5>Medicamentos Registrados</h5>
+            <p>Reporte de todos los medicamentos registrados en el sistema.</p>
         </div>
 
         <div class="table-responsive">
@@ -70,24 +70,20 @@
                     <tr>
                         <th>Código</th>
                         <th>Nombre</th>
-                        <th>Edad</th>
-                        <th>Teléfono</th>
-                        <th>Fecha de Consulta</th>
-                        <th>Dirección</th>
-                        <th>Motivo de Consulta</th>
+                        <th>Fecha de ingreso</th>
+                        <th>Fecha de vencimiendo</th>
+                        <th>Forma Farmaceutica</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {{-- Listado de pacientes --}}
+         
                     @foreach ($data as $item)
                         <tr>
-                            <td>{{ $item->codigo_paciente }}</td>
+                            <td>{{ $item->codigo_medicamento }}</td>
                             <td>{{ $item->nombre }}</td>
-                            <td>{{ $item->edad }}</td>
-                            <td>{{ $item->telefono }}</td>
-                            <td>{{ $item->fecha }}</td>
-                            <td>{{ $item->direccion }}</td>
-                            <td>{{ $item->detallesconsulta }}</td>
+                            <td>{{ $item->fechaI }}</td>
+                            <td>{{ $item->fechaV }}</td>
+                            <td>{{ $item->forma }}</td>
                         </tr>
                     @endforeach
                 </tbody>

@@ -53,7 +53,7 @@
         <a class="btn btn-primary me-2" href="/especialidades/create">
             <i class="fas fa-plus-circle"></i> Añadir Nueva Especialidad
         </a>
-        <a class="btn btn-danger" href="/especialidades/create">
+        <a class="btn btn-danger" href="/reporteEspecialidades">
             <i class="fas fa-file-pdf"></i> PDF
         </a>
     </div>

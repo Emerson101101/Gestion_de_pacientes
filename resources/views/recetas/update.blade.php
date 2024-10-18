@@ -52,13 +52,17 @@
         @method('PUT') 
 
         <div class="row mb-3">
-            <div class="col-md-6">
-                <label for="nombre" class="form-label">Nombre del medicamento</label>
-                <input type="text" class="form-control" name="nombre" value="{{$receta->nombre}}">
-                @error('nombre') 
+        <div class="col-md-6">
+                <label for="medicamento" class="form-label">Medicamento</label>
+                <select name="medicamento" id="medicento" class="form-control">
+                    @foreach ($medicamento as $item) 
+                        <option value="{{$item->codigo_medicamento}}" {{ $item->codigo_medicamento == $receta->medicamento ? 'selected' : '' }}>{{$item->nombre}}</option>
+                    @endforeach 
+                </select>
+                @error('medicamento') 
                 <div class="invalid-feedback d-block">
                     <strong>{{$message}}</strong>
-                </div>  
+                </div> 
                 @enderror
             </div>
 
@@ -106,6 +110,7 @@
 
         <div class="text-center mt-4">
             <button class="btn btn-primary">Guardar</button>
+            <a class="btn btn-secondary" href="/recetas/show" style="margin-left: 10px;">Volver</a>
         </div> 
     </form> 
 </div>

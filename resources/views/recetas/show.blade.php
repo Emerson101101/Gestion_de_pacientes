@@ -53,7 +53,7 @@
         <a class="btn btn-primary me-2" href="/recetas/create">
             <i class="fas fa-plus-circle"></i> Añadir Nueva Receta
         </a>
-        <a class="btn btn-danger" href="/reportePacientes">
+        <a class="btn btn-danger" href="/reporteRecetas">
             <i class="fas fa-file-pdf"></i> PDF
         </a>
     </div>
@@ -76,7 +76,7 @@
                 @foreach ($receta as $item)
                     <tr>
                         <td>{{ $item->codigo_receta }}</td>
-                        <td>{{ $item->nombre }}</td>
+                        <td>{{ $item->medicamento }}</td>
                         <td>{{ $item->horario }}</td>
                         <td>{{ $item->fecha }}</td>
                         <td>{{ $item->dias }}</td>

@@ -131,6 +131,7 @@
 
         <div class="text-center mt-4">
             <button class="btn btn-primary">Guardar</button>
+            <a class="btn btn-secondary" href="/citas/show" style="margin-left: 10px;">Volver</a>
         </div> 
     </form> 
 </div>

@@ -18,23 +18,23 @@ class MedicosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-        //listar todos los productos
+        // Listar todos los médicos de una especialidad específica
         $medico = medico::select(
             "medico.codigo_medico",
             "medico.nombre",
             "medico.apellido",
             "medico.telefono",
             "especialidad.nombre as especialidad"
-            )->join("especialidad", "especialidad.codico_especialidad", "=", "medico.especialidad")
-            ->get(); 
-        
-            
-        
-        return view('/medicos/show')->with(['medico'=>$medico]); 
+        )
+        ->join("especialidad", "especialidad.codico_especialidad", "=", "medico.especialidad")
+        ->where("medico.especialidad", $id)
+        ->get();
+    
+        return view('/medicos/show')->with(['medico' => $medico]);
     }
-
+    
     /**
      * Show the form for creating a new resource.
      *
@@ -57,7 +57,7 @@ class MedicosController extends Controller
             'nombre' => 'required|string|regex:/^[A-Za-záéíóúÁÉÍÓÚñÑ\s]+$/',
             'apellido' => 'required|string|regex:/^[A-Za-záéíóúÁÉÍÓÚñÑ\s]+$/',
             'especialidad' => 'required|string',
-            'telefono' => 'required|string',
+            'telefono' => 'required|integer',
         ], [
             'nombre.required' => 'El campo nombre es obligatorio.',
             'nombre.regex' => 'El campo nombre solo debe contener letras y espacios.',
@@ -65,11 +65,12 @@ class MedicosController extends Controller
             'apellido.regex' => 'El campo apellido solo debe contener letras y espacios.',
             'especialidad.required' => 'El campo especialidad es obligatorio.',
             'telefono.required' => 'El campo teléfono es obligatorio.',
+            'telefono.integer' => 'El campo telefono solo debe contener números.',
         ]);
             // Enviar insert 
             medico::create($data); 
             // Redireccionar 
-            return redirect('/medicos/show'); 
+            return redirect('/medicos/views'); 
     }
 
     /**
@@ -109,7 +110,7 @@ class MedicosController extends Controller
             'nombre' => 'required|string|regex:/^[A-Za-záéíóúÁÉÍÓÚñÑ\s]+$/',
             'apellido' => 'required|string|regex:/^[A-Za-záéíóúÁÉÍÓÚñÑ\s]+$/',
             'especialidad' => 'required|string',
-            'telefono' => 'required|string',
+            'telefono' => 'required|integer',
         ], [
             'nombre.required' => 'El campo nombre es obligatorio.',
             'nombre.regex' => 'El campo nombre solo debe contener letras y espacios.',
@@ -117,6 +118,7 @@ class MedicosController extends Controller
             'apellido.regex' => 'El campo apellido solo debe contener letras y espacios.',
             'especialidad.required' => 'El campo especialidad es obligatorio.',
             'telefono.required' => 'El campo teléfono es obligatorio.',
+            'telefono.integer' => 'El campo telefono solo debe contener números.',
         ]);
 
             $medico->nombre = $data['nombre']; 
@@ -127,7 +129,7 @@ class MedicosController extends Controller
             $medico->save(); 
             // Redireccionar 
             
-            return redirect('/medicos/show'); 
+            return redirect('/medicos/views'); 
     }
 
     /**

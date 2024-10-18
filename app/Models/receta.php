@@ -10,5 +10,5 @@ class receta extends Model
     use HasFactory;
     protected $table = 'recetas';
     protected $primaryKey = 'codigo_receta';
-    protected $fillable = ['nombre', 'horario','fecha','dias', 'dosis'];
+    protected $fillable = ['medicamento', 'horario','fecha','dias', 'dosis'];
 }

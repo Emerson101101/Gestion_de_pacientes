@@ -91,6 +91,8 @@
 
         <div class="text-center mt-4">
             <button type="submit" class="btn btn-primary">Registrar</button>
+            <a class="btn btn-secondary" href="/auth/show" style="margin-left: 10px;">Volver</a>
+
         </div>
     </form>
 </div>

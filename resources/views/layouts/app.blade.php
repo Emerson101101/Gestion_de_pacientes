@@ -108,6 +108,7 @@
                                             </a>
                                             <ul class="dropdown-menu">
                                                 <li><a class="dropdown-item" href="/especialidades/show">Especialidades <img src="{{ asset('img/id-badge.png') }}" alt=""></a></li>
+                                                <li><a class="dropdown-item" href="/medicamento/show">Medicamentos <img src="{{ asset('img/id-badge.png') }}" alt=""></a></li>
                                                 <li><a class="dropdown-item" href="/recetas/show">Recetas <img src="{{ asset('img/document.png') }}" alt=""></a></li>
                                                 <li><a class="dropdown-item" href="/reportes/show">Reportes <img src="{{ asset('img/pdf.png') }}" alt=""></a></li>
                                             </ul>

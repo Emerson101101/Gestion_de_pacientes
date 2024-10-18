@@ -41,20 +41,20 @@
 </style>
 
 <div class="header">
-    <h1>Modificar Paciente</h1>
-    <h5>Formulario para actualizar pacientes</h5>
+    <h1>Modificar Medicamento</h1>
+    <h5>Formulario para actualizar medicamentos</h5>
 </div>
 <hr>
 
 <div id="container">
-    <form action="/pacientes/update/{{$pacientes->codigo_paciente}}" method="POST">
+    <form action="/medicamento/update/{{$medicamento->codigo_medicamento}}" method="POST" enctype="multipart/form-data"> <!-- Asegúrate de incluir enctype -->
         @csrf
         @method('PUT') 
 
         <div class="row mb-3">
             <div class="col-md-6">
                 <label for="nombre" class="form-label">Nombre</label>
-                <input type="text" class="form-control" name="nombre" value="{{$pacientes->nombre}}">
+                <input type="text" class="form-control" name="nombre" value="{{$medicamento->nombre}}">
                 @error('nombre') 
                 <div class="invalid-feedback d-block">
                     <strong>{{$message}}</strong>
@@ -63,21 +63,9 @@
             </div>
 
             <div class="col-md-6">
-                <label for="edad" class="form-label">Edad</label>
-                <input type="text" class="form-control" name="edad" value="{{$pacientes->edad}}">
-                @error('edad') 
-                <div class="invalid-feedback d-block">
-                    <strong>{{$message}}</strong>
-                </div>  
-                @enderror
-            </div>
-        </div>
-
-        <div class="row mb-3">
-            <div class="col-md-6">
-                <label for="telefono" class="form-label">Teléfono</label>
-                <input type="number" class="form-control" name="telefono" value="{{$pacientes->telefono}}">
-                @error('telefono') 
+                <label for="fechaI" class="form-label">Fecha De Ingreso</label>
+                <input type="date" class="form-control" name="fechaI" value="{{$medicamento->fechaI}}">
+                @error('fechaI') 
                 <div class="invalid-feedback d-block">
                     <strong>{{$message}}</strong>
                 </div>  
@@ -85,21 +73,9 @@
             </div>
 
             <div class="col-md-6">
-                <label for="fecha" class="form-label">Fecha</label>
-                <input type="date" class="form-control" name="fecha" value="{{$pacientes->fecha}}">
-                @error('fecha') 
-                <div class="invalid-feedback d-block">
-                    <strong>{{$message}}</strong>
-                </div>  
-                @enderror
-            </div>
-        </div>
-
-        <div class="row mb-3">
-            <div class="col-md-6">
-                <label for="direccion" class="form-label">Dirección</label>
-                <input type="text" class="form-control" name="direccion" value="{{$pacientes->direccion}}">
-                @error('direccion') 
+                <label for="fechaV" class="form-label">Fecha De Vencimiento</label>
+                <input type="date" class="form-control" name="fechaV" value="{{$medicamento->fechaV}}">
+                @error('fechaV') 
                 <div class="invalid-feedback d-block">
                     <strong>{{$message}}</strong>
                 </div>  
@@ -107,19 +83,31 @@
             </div>
 
             <div class="col-md-6">
-                <label for="detallesconsulta" class="form-label">Motivo de Consulta</label>
-                <input type="text" class="form-control" name="detallesconsulta" value="{{$pacientes->detallesconsulta}}">
-                @error('detallesconsulta') 
+                <label for="forma" class="form-label">Forma</label>
+                <input type="text" class="form-control" name="forma" value="{{$medicamento->forma}}">
+                @error('forma') 
                 <div class="invalid-feedback d-block">
                     <strong>{{$message}}</strong>
                 </div>  
                 @enderror
             </div>
+
+            <div class="col-md-6">
+                <label for="imagen" class="form-label">Imagen</label>
+                <input type="file" class="form-control" name="imagen" id="imagen" accept="image/*"> <!-- Agrega accept para restringir tipos de archivo -->
+                <small class="form-text text-muted">Dejar en blanco si no deseas cambiar la imagen actual.</small>
+                @error('imagen') 
+                <div class="invalid-feedback d-block">
+                    <strong>{{ $message }}</strong>
+                </div> 
+                @enderror 
+            </div>
+
         </div>
 
         <div class="text-center mt-4">
             <button class="btn btn-primary">Guardar</button>
-            <a class="btn btn-secondary" href="/pacientes/show" style="margin-left: 10px;">Volver</a>
+            <a class="btn btn-secondary" href="/medicamento/show" style="margin-left: 10px;">Volver</a>
         </div> 
     </form> 
 </div>
